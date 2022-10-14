@@ -4,16 +4,16 @@
         header('Location: dashboard.php');
         return;
     }
-    if (isset($_SESSION['error'])) {
-        echo $_SESSION['error'];
-        unset($_SESSION['error']);
-    }
+    
     if(isset($_POST['username']) && isset($_POST['passwd'])) {
         $username = $_POST['username'];
         $passwd = $_POST['passwd'];
         require_once 'connect.php';
-        $_SESSION['pdo'] = connect($username, $passwd);
-        if ($_SESSION['pdo'] != false) {
+        $query='SELECT user_name FROM users WHERE user_name = :username AND password = :passwd;';
+        $stmt = $pdo->prepare($query);
+        $stmt->execute(array(':username' => $username, ':passwd' => $passwd));
+
+        if ($stmt->rowCount() != 0) {
             $_SESSION['username'] = $username;
             $_SESSION['success'] = 'You have been logged in successfully';
             header('Location: dashboard.php');
@@ -43,7 +43,14 @@
 </head>
 <body>
     <header>Log In</header>
-    <div id="msg"></div>
+    <div id="msg">
+        <?php 
+           if (isset($_SESSION['error'])) {
+            echo $_SESSION['error'];
+            unset($_SESSION['error']);
+            } 
+        ?>
+    </div>
     <div>
         <form action="login.php" method="post">
             <p>
