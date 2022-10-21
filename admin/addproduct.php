@@ -5,7 +5,7 @@
         header('Location: login.php');
         return;
     }
-    
+
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
     <title>Warehouse Management system</title>
 </head>
 <body>
-    <header>Order Management</header>
+    <header>Add Product</header>
     <div id="msg">
         <?php 
            if (isset($_SESSION['message'])) {
@@ -34,10 +34,10 @@
         ?>
     </div>
     <div>
-        
+
     </div>
     <div>
-        <button onclick="location.href='dashboard.php'; return false;">Back to Home</button>
+        <button onclick="location.href='products.php'; return false;">Back</button>
     </div> 
 
 </body>

@@ -1,16 +1,42 @@
 <?php
     session_start();
-    if(!(isset($_SESSION['adminName']))) {
+    if(!(isset($_SESSION['adminname']))) {
         $_SESSION['message'] = 'You must log in first';
         header('Location: login.php');
         return;
     }
     if (isset($_POST['current_pass']) && isset($_POST['new_pass']) && isset($_POST['re_new_pass'])) {
         require_once "connect.php";
-        $query='SELECT password FROM admins WHERE admin_name = :username;';
+        $query='SELECT admin_name FROM admins WHERE admin_name = :adminname and password = :passwd;';
         $stmt = $pdo->prepare($query);
-        $stmt->execute(array(':username' => $_SESSION['adminName']));
-        
+        $stmt->execute(array(':adminname' => $_SESSION['adminname'], 'passwd'=> $_POST['current_pass']));
+        if ($stmt->rowCount() != 0) {
+            if($_POST['new_pass'] == $_POST['re_new_pass']) {
+                if ($_POST['new_pass'] != $_POST['current_pass']){
+                    $query='UPDATE admins SET password = :new_pass WHERE admin_name = :adminname;';
+                    $stmt = $pdo->prepare($query);
+                    $stmt->execute(array(':new_pass' => $_POST['new_pass'], ':adminname' => $_SESSION['adminname']));
+                    $_SESSION['message'] = 'Password changed successfully';
+                    header('Location: changepassword.php');
+                    return;
+                }
+                else {
+                    $_SESSION['message'] = 'New password cannot be same as current password';
+                    header('Location: changepassword.php');
+                    return;
+                }  
+            } 
+            else {
+                $_SESSION['message'] = 'Re-entered password is incorrect';
+                header('Location: changepassword.php');
+                return;
+            }
+        } 
+        else {
+            $_SESSION['message'] = 'Invalid current password';
+            header('Location: changepassword.php');
+            return;
+        }
     }
 ?>
 
@@ -58,7 +84,10 @@
                 <button onclick="location.href='changepassword.php'; return false;">Cancel</button>
             </p>
         </form>
-    </div>    
+    </div>
+    <div>
+        <button onclick="location.href='dashboard.php'; return false;">Back to Home</button>
+    </div>  
 
 </body>
 </html>

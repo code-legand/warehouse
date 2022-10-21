@@ -17,7 +17,7 @@
             return;
         }
         else {
-            $_SESSION['error']="Username already exists";
+            $_SESSION['message']="Username already exists";
             header('Location: signup.php');
             return;
         }

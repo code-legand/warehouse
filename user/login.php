@@ -15,11 +15,11 @@
 
         if ($stmt->rowCount() != 0) {
             $_SESSION['username'] = $username;
-            $_SESSION['success'] = 'You have been logged in successfully';
+            $_SESSION['message'] = 'You have been logged in successfully';
             header('Location: dashboard.php');
             return;
         } else {
-            $_SESSION['error'] = 'Invalid username or password';
+            $_SESSION['message'] = 'Invalid username or password';
             header('Location: login.php');
             return;
         }
@@ -45,9 +45,9 @@
     <header>Log In</header>
     <div id="msg">
         <?php 
-           if (isset($_SESSION['error'])) {
-            echo $_SESSION['error'];
-            unset($_SESSION['error']);
+           if (isset($_SESSION['message'])) {
+            echo $_SESSION['message'];
+            unset($_SESSION['message']);
             } 
         ?>
     </div>
