@@ -3,7 +3,22 @@ table {
     border-spacing: 0;
     width: 100%;
 }
-table, th, td {
+table, caption, th, td {
     border: 1px solid black;
     border-collapse: collapse;
+}
+
+.productdetails_image{
+    max-width: 25%;
+    max-height: 25%;
+}
+
+.updateproduct_image{
+    max-width: 20%;
+    max-height: 20%;
+}
+
+.updateproduct_figure{
+    border: 2px solid black;
+    border-radius: 5px;
 }
