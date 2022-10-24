@@ -73,12 +73,12 @@
                             <input type="submit" value="View">
                             </form>';
                     echo "</td><td>";
-                    echo '<form action="updateproduct.php">
+                    echo '<form action="updateproduct.php" method="POST">
                             <input type="hidden" name="storage_id" value="'.$row['storage_id'].'">
                             <input type="submit" value="Edit">
                             </form>';
                     echo "</td><td>";
-                    echo '<form action="deleteproduct.php">
+                    echo '<form action="deleteproduct.php" method="POST">
                             <input type="hidden" name="storage_id" value="'.$row['storage_id'].'">
                             <input type="submit" value="Delete">
                             </form>';

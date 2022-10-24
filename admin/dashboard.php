@@ -46,6 +46,9 @@
             <a href="users.php">User Management</a>
         </div>
         <div>
+            <a href="queries.php">Query Manager</a>
+        </div>
+        <div>
             <a href="reports.php">Reports</a>
         </div>
         <div>

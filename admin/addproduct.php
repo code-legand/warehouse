@@ -42,7 +42,7 @@
              }
         }
         
-        if (isset($_FILES['product_image'])) {
+        if (isset($_FILES['product_image']) && $_FILES['product_image']['tmp_name'] != '') {
             $product_image = $_FILES['product_image'];
             $product_image_name = $product_image['name'];
             $product_image_tmp_name = $product_image['tmp_name'];

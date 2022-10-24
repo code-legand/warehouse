@@ -6,7 +6,7 @@
         return;
     }
 
-    if(isset($_GET['update_comfirm']) && $_GET['update_confirm'] == '1'){
+    if(isset($_POST['update_confirm']) && $_POST['update_confirm'] == 1){
         if (isset($_POST['product_name']) && isset($_POST['product_category']) && isset($_POST['product_price']) && isset($_POST['product_quantity']) && isset($_POST['action']) && isset($_POST['action_date']) && isset($_POST['block_no']) && isset($_POST['row_no'])) {
             $product_name = $_POST['product_name'];
             $product_category = $_POST['product_category'];
@@ -44,7 +44,15 @@
                  }
             }
             
-            if (isset($_FILES['product_image'])) {
+            require_once 'connect.php';
+            $query = "SELECT description FROM storage WHERE storage_id = :storage_id";
+            $stmt=$pdo->prepare($query);
+            $stmt->execute(array(':storage_id' => $_SESSION['storage_id']));
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $details = $row['description'];
+            $details = json_decode($details, true);
+            $product_image_destination = $details['product_image'];
+            if (isset($_FILES['product_image']) && $_FILES['product_image']['tmp_name'] != '') {
                 $product_image = $_FILES['product_image'];
                 $product_image_name = $product_image['name'];
                 $product_image_tmp_name = $product_image['tmp_name'];
@@ -57,34 +65,33 @@
                 if (in_array($product_image_actual_ext, $allowed)) {
                     if ($product_image_error === 0) {
                         if ($product_image_size < 1000000) {
-                            $query = "SELECT * FROM storage WHERE storage_id = :storage_id";
-                            $stmt=$pdo->prepare($query);
-                            $stmt->execute(array(':storage_id' => $_GET['storage_id']));
-                            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                            $details = $row['description'];
-                            $details = json_decode($details, true);
-                            $product_image_destination = $details['product_image'];
+                            if ($product_image_destination == false){
+                                $product_image_name_new = uniqid('', true).".".$product_image_actual_ext;
+                                $current_directory = getcwd();
+                                $product_image_destination = str_replace('admin', 'uploads/images/', $current_directory).$product_image_name_new;
+                            }
                             move_uploaded_file($product_image_tmp_name, $product_image_destination);
-                            $product_image = $product_image_destination;
                         }
                         else {
-                            $_SESSION['message'] = "file size should be less than 1 MB!";
-                            header('Location: updateproduct.php?storage_id='.$_GET['storage_id']);
+                            $_SESSION['message'] = "Update Failed! file size should be less than 1 MB!";
+                            header('Location: updateproduct.php');
                             return;
                         }
                     } 
                     else {
-                        $_SESSION['message'] = "There was an error uploading your image!";
-                        header('Location: updateproduct.php?storage_id='.$_GET['storage_id']);
+                        $_SESSION['message'] = "Update Failed! There was an error uploading your image!";
+                        header('Location: updateproduct.php');
                         return;
                     }
                 } 
                 else {
-                    $_SESSION['message'] = "You cannot upload files of this type!";
-                    header('Location: updateproduct.php?storage_id='.$_GET['storage_id']);
+                    $_SESSION['message'] = "Update failed! You cannot upload files of this type!";
+                    header('Location: updateproduct.php');
                     return;
                 }
             }
+            $product_image = $product_image_destination;
+            $details['product_image'] = $product_image;
     
             if(isset($_POST['product_desc'])){
                 $product_desc = $_POST['product_desc'];
@@ -92,8 +99,6 @@
             else{
                 $product_desc = "";
             }
-    
-            $details['product_image'] = $product_image;
             $details['product_desc'] = $product_desc;
     
             $details = json_encode($details);
@@ -116,19 +121,24 @@
                 ':product_quantity' => $product_quantity,
                 ':block_no' => $block_no,
                 ':row_no' => $row_no,
-                ':storage_id' => $_GET['storage_id']
+                ':storage_id' => $_SESSION['storage_id']
             ));
             $_SESSION['message'] = "Product updated successfully!";
-            header('Location: updateproduct.php?storage_id='.$_GET['storage_id']);
+            header('Location: updateproduct.php');
             return;        
         }
     }
 
-    if (isset($_GET['storage_id'])) {
+    if (isset($_POST['storage_id'])) {
+        $_SESSION['storage_id'] = $_POST['storage_id'];
+        header('Location: updateproduct.php');
+        return;
+    }
+    if (isset($_SESSION['storage_id'])) {
         require_once 'connect.php';
         $query = "SELECT * FROM storage WHERE storage_id = :storage_id";
         $stmt=$pdo->prepare($query);
-        $stmt->execute(array(':storage_id' => $_GET['storage_id']));
+        $stmt->execute(array(':storage_id' => $_SESSION['storage_id']));
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($row === false) {
             $_SESSION['message'] = 'Bad value for storage_id';
@@ -184,7 +194,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
     <link rel="manifest" href="/warehouse/img/site.webmanifest">
-    <script src="#"></script>
+    <script src="/warehouse/js/scripts.js"></script>
     <title>Warehouse Management system</title>
 </head>
 <body>
@@ -291,10 +301,9 @@
                 <input type="number" name="row_no" id="row_no" min="0" required value="<?= $row_no ?>">
             </p>
             <p>
-                <input type="hidden" name="storage_id" value="<?= $_GET['storage_id'] ?>" method="GET">
                 <input type="hidden" name="update_confirm" id="update_confirm" value="0">
                 <input type="submit" value="Update Product" onclick="update_confirm.value = '1';">
-                <button onclick="location.href='updateproduct.php'; return false;">Clear</button>
+                <button onclick="location.href='updateproduct.php'; return false;">Reset</button>
             </p>
         </form>
     </div>
