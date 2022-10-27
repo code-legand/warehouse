@@ -8,8 +8,14 @@
     if(isset($_POST['query'])){
         require_once 'connect.php';
         $query = $_POST['query'];
-        $stmt = $pdo->prepare($query);
-        $stmt->execute();
+        try {
+            $stmt = $pdo->prepare($query);
+            $stmt->execute();
+        } catch (\Throwable $th) {
+            $error = $th->getMessage();
+            return;
+        }
+        
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $columns = array_keys($result[0]);
         $rows = array_values($result);
@@ -24,7 +30,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="#">
+    <link rel="stylesheet" href="/warehouse/css/styles.css">
     <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
@@ -52,9 +58,27 @@
             <button onclick="location.href='queries.php'; return false;">Clear</button>
         </form>
         <div>
-            <table>
-                
-            </table>
+            <?php
+                if(isset($error)){
+                    echo $error;
+                }
+                else{
+                    echo "<table>";
+                    echo "<tr>";
+                    for($i=0; $i<$num_columns; $i++){
+                        echo "<th>".$columns[$i]."</th>";
+                    }
+                    echo "</tr>";
+                    for($i=0; $i<$num_rows; $i++){
+                        echo "<tr>";
+                        for($j=0; $j<$num_columns; $j++){
+                            echo "<td>".$rows[$i][$columns[$j]]."</td>";
+                        }
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                }
+            ?>
         </div>
     </div>
     <div>

@@ -6,10 +6,9 @@
         return;
     }
     require_once 'connect.php';
-    $query = "SELECT storage_id, product_name, category, price, quantity, block_no, row_no FROM storage";
+    $query = "SELECT user_id, user_name, phone, email FROM users";
     $stmt=$pdo->prepare($query);
     $stmt->execute();
-    $stmt->
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +27,7 @@
     <title>Warehouse Management system</title>
 </head>
 <body>
-    <header>Order Management</header>
+    <header>User Management</header>
     <div id="msg">
         <?php 
            if (isset($_SESSION['message'])) {
@@ -39,48 +38,39 @@
     </div>
     <div>
         <div>
-            <button onclick="location.href='addproduct.php';"">Add Product</button>
+            <button onclick="location.href='adduser.php';"">Add User</button>
         </div>
         <table>
             <tr>
-                <th>Storage ID</th>
-                <th>Product Name</th>
-                <th>Category</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Block No</th>
-                <th>Row No</th>
+                <th>User ID</th>
+                <th>User Name</th>
+                <th>Phone</th>
+                <th>Email</th>
                 <th colspan="3">Operations</th>
             </tr>
             <?php
                 while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
                     echo "<tr><td>";
-                    echo($row['storage_id']);
+                    echo($row['user_id']);
                     echo "</td><td>";
-                    echo($row['product_name']);
+                    echo($row['user_name']);
                     echo "</td><td>";
-                    echo($row['category']);
+                    echo($row['phone']);
                     echo "</td><td>";
-                    echo($row['price']);
+                    echo($row['email']);
                     echo "</td><td>";
-                    echo($row['quantity']);
-                    echo "</td><td>";
-                    echo($row['block_no']);
-                    echo "</td><td>";
-                    echo($row['row_no']);
-                    echo "</td><td>";
-                    echo '<form action="productdetails.php">
-                            <input type="hidden" name="storage_id" value="'.$row['storage_id'].'">
+                    echo '<form action="userdetails.php">
+                            <input type="hidden" name="user_id" value="'.$row['user_id'].'">
                             <input type="submit" value="View">
                             </form>';
                     echo "</td><td>";
-                    echo '<form action="updateproduct.php" method="POST">
-                            <input type="hidden" name="storage_id" value="'.$row['storage_id'].'">
+                    echo '<form action="updateuser.php" method="POST">
+                            <input type="hidden" name="user_id" value="'.$row['user_id'].'">
                             <input type="submit" value="Edit">
                             </form>';
                     echo "</td><td>";
-                    echo '<form action="deleteproduct.php" method="POST">
-                            <input type="hidden" name="storage_id" value="'.$row['storage_id'].'">
+                    echo '<form action="deleteuser.php" method="POST">
+                            <input type="hidden" name="user_id" value="'.$row['user_id'].'">
                             <input type="submit" value="Delete">
                             </form>';
                     echo "</td></tr>";

@@ -134,6 +134,7 @@
         header('Location: updateproduct.php');
         return;
     }
+    
     if (isset($_SESSION['storage_id'])) {
         require_once 'connect.php';
         $query = "SELECT * FROM storage WHERE storage_id = :storage_id";
