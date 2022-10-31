@@ -1,15 +1,13 @@
 <?php
     session_start();
-    if(!(isset($_SESSION['adminname']))) {
+    if(!(isset($_SESSION['username']))) {
         $_SESSION['message'] = 'You must be logged in to view this page';
         header('Location: login.php');
         return;
     }
-
     if (isset($_POST['update_confirm']) && $_POST['update_confirm'] == '1'){
-        if(isset($_POST['username']) && isset($_POST['passwd']) && isset($_POST['email']) && isset($_POST['phone']) && isset($_POST['street']) && isset($_POST['city']) && isset($_POST['state']) && isset($_POST['zipcode'])){
+        if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['phone']) && isset($_POST['street']) && isset($_POST['city']) && isset($_POST['state']) && isset($_POST['zipcode'])){
             $username = $_POST['username'];
-            $passwd = $_POST['passwd'];
             $email = $_POST['email'];
             $phone = $_POST['phone'];
             $street = $_POST['street'];
@@ -17,70 +15,50 @@
             $state = $_POST['state'];
             $zip_code = $_POST['zipcode'];
             require_once 'connect.php';
-            $query = "SELECT user_id FROM users WHERE user_name = :username AND user_id != :userid";
+            $query = "SELECT user_name FROM users WHERE user_name = :username";
             $stmt = $pdo->prepare($query);
-            $stmt->execute(array(':username' => $username, ':userid' => $_POST['userid']));
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            if($stmt->rowCount() > 0) {
+            $stmt->execute(array(':username' => $username));
+            if($stmt->rowCount() > 0 && $username != $_SESSION['username']) {
                 $_SESSION['message'] = 'Username already exists';
-                header('Location: updateuser.php');
+                header('Location: updateprofile.php');
                 return;
             }
             else{
-                $query = "UPDATE users SET user_name = :username, password = :passwd, email = :email, phone = :phone, street = :street, city = :city, state = :state, zip_code = :zip_code WHERE user_id = :user_id;";
+                $query = "UPDATE users SET user_name = :newusername, email = :email, phone = :phone, street = :street, city = :city, state = :state, zip_code = :zip_code WHERE user_name = :currentusername;";
                 $stmt = $pdo->prepare($query);
                 $stmt->execute(array(
-                    ':username' => $username,
-                    ':passwd' => $passwd,
+                    ':newusername' => $username,
                     ':email' => $email,
                     ':phone' => $phone,
                     ':street' => $street,
                     ':city' => $city,
                     ':state' => $state,
                     ':zip_code' => $zip_code,
-                    ':user_id' => $_SESSION['user_id']
-            ));
-            }
-            
-            $_SESSION['message'] = 'User updated successfully';
-            header('Location: updateuser.php');
-            return;
+                    ':currentusername' => $_SESSION['username']
+                ));
+                $_SESSION['username'] = $username;
+                $_SESSION['message'] = 'User updated successfully';
+                header('Location: updateprofile.php');
+                return;
+            } 
         }
     }
-
-    if(isset($_POST['user_id'])){
-        $_SESSION['user_id'] = $_POST['user_id'];
-        header('Location: updateuser.php');
-        return;
-    }
-
-    if(isset($_SESSION['user_id'])){
-        require_once 'connect.php';
-        $query = "SELECT * FROM users WHERE user_id = :user_id";
-        $stmt = $pdo->prepare($query);
-        $stmt->execute(array(':user_id' => $_SESSION['user_id']));
-        if($stmt->rowCount() == 0) {
-            $_SESSION['message'] = 'Bad value for user_id';
-            header('Location: users.php');
-            return;
-        }
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        $user_id = htmlentities($row['user_id']);
-        $user_name = htmlentities($row['user_name']);
-        $street = htmlentities($row['street']);
-        $city = htmlentities($row['city']);
-        $state = htmlentities($row['state']);
-        $zip_code = htmlentities($row['zip_code']);
-        $phone = htmlentities($row['phone']);
-        $email = htmlentities($row['email']);
-        $password = htmlentities($row['password']);
-    }
-    else {
-        $_SESSION['message'] = 'Missing user_id';
-        header('Location: users.php');
-        return;
-    }
-    
+    require_once 'connect.php';
+    $query = "SELECT * FROM users WHERE user_name = :username";
+    $stmt = $pdo->prepare($query); 
+    $stmt->execute(array(':username' => $_SESSION['username']));
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    echo $_SESSION['username'];
+    echo '<pre>';
+    print_r($row);
+    echo '</pre>';
+    $user_name = htmlentities($row['user_name']);
+    $email = htmlentities($row['email']);
+    $phone = htmlentities($row['phone']);
+    $street = htmlentities($row['street']);
+    $city = htmlentities($row['city']);
+    $state = htmlentities($row['state']);
+    $zip_code = htmlentities($row['zip_code']);
 ?>
 
 <!DOCTYPE html>
@@ -99,24 +77,20 @@
     <title>Warehouse Management system</title>
 </head>
 <body>
-    <div>
-       <?php 
-        if(isset($_SESSION['message'])) {
-            echo "<p>".$_SESSION['message']."</p>";
-            unset($_SESSION['message']); 
-        }
-       ?>
+    <header>Update Profile</header>
+    <div id="msg">
+        <?php 
+           if (isset($_SESSION['message'])) {
+            echo $_SESSION['message'];
+            unset($_SESSION['message']);
+            } 
+        ?>
     </div>
-    <header>Edit User Information</header>  
     <div>
-        <form action="updateuser.php" method="post">
+        <form action="updateprofile.php" method="post">
             <p>
                 <label for="uname">User Name: </label>
                 <input type="text" name="username" id="uname" required value="<?= $user_name ?>">
-            </p>
-            <p>
-                <label for="pass">Password: </label>
-                <input type="password" name="passwd" id="pass" required value="<?= $password ?>">
             </p>
             <p>
                 <label for="mail">Email: </label>
@@ -145,12 +119,12 @@
             <p>
                 <input type="hidden" name="update_confirm" id="update_confirm" value="0">
                 <input type="submit" name="update" value="Update" onclick="update_confirm.value='1';">
-                <button onclick="location.href='updateuser.php'; return false">Reset</button>
+                <button onclick="location.href='updateprofile.php'; return false">Reset</button>
             </p>
         </form>
     </div>
     <div>
-        <button onclick="location.href='users.php'; return false">Back</button>
-    </div>  
+        <button onclick="location.href='profile.php'; return false">Back</button>
+    </div>   
 </body>
 </html>

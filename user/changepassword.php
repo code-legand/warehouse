@@ -1,21 +1,21 @@
 <?php
     session_start();
-    if(!(isset($_SESSION['adminname']))) {
+    if(!(isset($_SESSION['username']))) {
         $_SESSION['message'] = 'You must log in first';
         header('Location: login.php');
         return;
     }
     if (isset($_POST['current_pass']) && isset($_POST['new_pass']) && isset($_POST['re_new_pass'])) {
         require_once "connect.php";
-        $query='SELECT admin_name FROM admins WHERE admin_name = :adminname and password = :passwd;';
+        $query='SELECT user_name FROM users WHERE user_name = :username and password = :passwd;';
         $stmt = $pdo->prepare($query);
-        $stmt->execute(array(':adminname' => $_SESSION['adminname'], 'passwd'=> $_POST['current_pass']));
+        $stmt->execute(array(':username' => $_SESSION['username'], 'passwd'=> $_POST['current_pass']));
         if ($stmt->rowCount() != 0) {
             if($_POST['new_pass'] == $_POST['re_new_pass']) {
                 if ($_POST['new_pass'] != $_POST['current_pass']){
-                    $query='UPDATE admins SET password = :new_pass WHERE admin_name = :adminname;';
+                    $query='UPDATE users SET password = :new_pass WHERE user_name = :username;';
                     $stmt = $pdo->prepare($query);
-                    $stmt->execute(array(':new_pass' => $_POST['new_pass'], ':adminname' => $_SESSION['adminname']));
+                    $stmt->execute(array(':new_pass' => $_POST['new_pass'], ':username' => $_SESSION['username']));
                     $_SESSION['message'] = 'Password changed successfully';
                     header('Location: changepassword.php');
                     return;
@@ -81,12 +81,12 @@
             </p>
             <p>
                 <input type="submit" value="Change Password">
-                <button onclick="location.href='changepassword.php'; return false;">Cancel</button>
+                <button onclick="location.href='changepassword.php'; return false;">Clear</button>
             </p>
         </form>
     </div>
     <div>
-        <button onclick="location.href='dashboard.php'; return false;">Back to Home</button>
+        <button onclick="location.href='dashboard.php'; return false;">Back</button>
     </div>  
 
 </body>

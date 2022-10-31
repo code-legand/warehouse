@@ -81,7 +81,7 @@
             </p>
             <p>
                 <input type="submit" value="Change Password">
-                <button onclick="location.href='changepassword.php'; return false;">Cancel</button>
+                <button onclick="location.href='changepassword.php'; return false;">Clear</button>
             </p>
         </form>
     </div>
