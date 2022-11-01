@@ -91,7 +91,7 @@
         <button onclick="location.href='updateprofile.php';">Update Profile</button>
     </div>
     <div>
-        <button onclick="location.href='dashboard.php'; return false;">Back</button>
+        <button onclick="location.href='dashboard.php'; return false;">Dashboard</button>
     </div> 
 </body>
 </html>

@@ -86,8 +86,8 @@
         </form>
     </div>
     <div>
-        <button onclick="location.href='dashboard.php'; return false;">Back</button>
-    </div>  
+        <button onclick="location.href='dashboard.php'; return false;">Dashboard</button>
+    </div>
 
 </body>
 </html>

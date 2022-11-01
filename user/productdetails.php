@@ -20,7 +20,6 @@
         $product_name = htmlentities($row['product_name']);
         $category = htmlentities($row['category']);
         $price = htmlentities($row['price']);
-        $quantity = htmlentities($row['quantity']);
 
         $details = $row['description'];
         $details = json_decode($details, true);
@@ -31,6 +30,12 @@
         $product_image_path = $a_details['product_image'];
         $product_image = explode('/', $product_image_path);
         $product_image = '/warehouse/uploads/images/'.end($product_image);
+
+        $query2 = "SELECT sum(quantity) as blocked_quantity FROM orders WHERE storage_id = :storage_id AND status = 'P'";
+        $stmt2 = $pdo->prepare($query2);
+        $stmt2->execute(array(':storage_id' => $storage_id));
+        $row2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+        $quantity = $row['quantity'] - $row2['blocked_quantity'];
         
     } 
     else {
@@ -131,7 +136,7 @@
         </form>
     </div>
     <div>
-        <button onclick="location.href='products.php'; return false;">Back</button>
+        <button onclick="location.href='dashboard.php'; return false;">Dashboard</button>
     </div> 
 </body>
 </html>

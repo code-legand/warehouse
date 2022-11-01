@@ -48,10 +48,6 @@
     $stmt = $pdo->prepare($query); 
     $stmt->execute(array(':username' => $_SESSION['username']));
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    echo $_SESSION['username'];
-    echo '<pre>';
-    print_r($row);
-    echo '</pre>';
     $user_name = htmlentities($row['user_name']);
     $email = htmlentities($row['email']);
     $phone = htmlentities($row['phone']);
@@ -124,7 +120,7 @@
         </form>
     </div>
     <div>
-        <button onclick="location.href='profile.php'; return false">Back</button>
+        <button onclick="location.href='dashboard.php'; return false;">Dashboard</button>
     </div>   
 </body>
 </html>

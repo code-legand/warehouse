@@ -9,6 +9,13 @@
     $query = "SELECT storage_id, product_name, category, price, quantity FROM storage;";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
+    $query2 = "SELECT storage_id, sum(quantity) as blocked_quantity FROM orders where status = 'P' GROUP BY storage_id;";
+    $stmt2 = $pdo->prepare($query2);
+    $stmt2->execute();
+    $blocked_quantity = array();
+    while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)){
+        $blocked_quantity[$row2['storage_id']] = $row2['blocked_quantity'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +61,7 @@
                     echo "</td><td>";
                     echo($row['price']);
                     echo "</td><td>";
-                    echo($row['quantity']);
+                    echo($row['quantity'] - $blocked_quantity[$row['storage_id']]);
                     echo "</td><td>";
                     echo('<form action="productdetails.php" method="get">
                             <input type="hidden" name="storage_id" value="'.$row['storage_id'].'">
@@ -70,8 +77,8 @@
             ?>
         </table>
     </div>
-     <div>
-        <button onclick="location.href='dashboard.php'; return false;">Back</button>
-     </div>
+    <div>
+        <button onclick="location.href='dashboard.php'; return false;">Dashboard</button>
+    </div>
 </body>
 </html>
