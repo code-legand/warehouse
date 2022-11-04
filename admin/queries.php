@@ -6,21 +6,26 @@
         return;
     }
     if(isset($_POST['query'])){
+        $_SESSION['query'] = $_POST['query'];
+        header('Location: queries.php');
+        return;
+    }
+    if(isset($_SESSION['query'])){
         require_once 'connect.php';
-        $query = $_POST['query'];
         try {
-            $stmt = $pdo->prepare($query);
+            $stmt = $pdo->prepare($_SESSION['query']);
             $stmt->execute();
-        } catch (\Throwable $th) {
-            $error = $th->getMessage();
-            return;
+            $_SESSION['query_status'] = 'success';
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $columns = array_keys($result[0]);
+            $rows = array_values($result);
+            $num_rows = count($rows);
+            $num_columns = count($columns);
+        } 
+        catch (\Throwable $th) {
+            // $error = $th->getMessage();          //removed for security reasons
+            $_SESSION['query_status'] = 'error';
         }
-        
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $columns = array_keys($result[0]);
-        $rows = array_values($result);
-        $num_rows = count($rows);
-        $num_columns = count($columns);
     }
 ?>
 
@@ -53,31 +58,37 @@
         <button>Query Log</button>
         <form action="queries.php" method="post" autocomplete="off">
             <label for="query">Query : </label>
-            <input type="text" name="query" id="query">
+            <input type="text" name="query" id="query" autofocus>
             <input type="submit" value="RUN">
             <button onclick="location.href='queries.php'; return false;">Clear</button>
         </form>
         <div>
             <?php
-                if(isset($error)){
-                    echo $error;
-                }
-                else{
-                    echo "<table>";
-                    echo "<tr>";
-                    for($i=0; $i<$num_columns; $i++){
-                        echo "<th>".$columns[$i]."</th>";
-                    }
-                    echo "</tr>";
-                    for($i=0; $i<$num_rows; $i++){
-                        echo "<tr>";
-                        for($j=0; $j<$num_columns; $j++){
-                            echo "<td>".$rows[$i][$columns[$j]]."</td>";
+                if(isset($_SESSION['query_status'])){
+                    if($_SESSION['query_status'] == 'success'){
+                        echo 'Query executed successfully';
+                        echo '<table>';
+                        echo '<tr>';
+                        for($i = 0; $i < $num_columns; $i++){
+                            echo '<th>'.$columns[$i].'</th>';
                         }
-                        echo "</tr>";
+                        echo '</tr>';
+                        for($i = 0; $i < $num_rows; $i++){
+                            echo '<tr>';
+                            for($j = 0; $j < $num_columns; $j++){
+                                echo '<td>'.$rows[$i][$columns[$j]].'</td>';
+                            }
+                            echo '</tr>';
+                        }
+                        echo '</table>';
+                    } 
+                    else {
+                        echo 'Query execution failed';
                     }
-                    echo "</table>";
+                    unset($_SESSION['query_status']);
+                    unset($_SESSION['query']);   
                 }
+                             
             ?>
         </div>
     </div>
