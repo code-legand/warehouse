@@ -5,6 +5,7 @@
         header('Location: login.php');
         return;
     }
+    require_once 'querylog.php';
     if(isset($_POST['query'])){
         $_SESSION['query'] = $_POST['query'];
         header('Location: queries.php');
@@ -15,18 +16,24 @@
         try {
             $stmt = $pdo->prepare($_SESSION['query']);
             $stmt->execute();
+            
+            // echo $stmt->debug_print_backtrace();
+
             $_SESSION['query_status'] = 'success';
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $columns = array_keys($result[0]);
             $rows = array_values($result);
             $num_rows = count($rows);
             $num_columns = count($columns);
+            storequery($_SESSION['query']);
         } 
         catch (\Throwable $th) {
             // $error = $th->getMessage();          //removed for security reasons
             $_SESSION['query_status'] = 'error';
         }
     }
+
+    $logs = printquery();
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +48,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
     <link rel="manifest" href="/warehouse/img/site.webmanifest">
-    <script src="#"></script>
+    <script src="/warehouse/js/scripts.js"></script>
     <title>Warehouse Management system</title>
 </head>
 <body>
@@ -55,7 +62,21 @@
         ?>
     </div>
     <div>
-        <button>Query Log</button>
+        <button id="log-trigger" onclick="resize();">Show Log</button>
+        <div id="log-tab">
+            <?php
+                try {
+                    // echo $logs;
+                    foreach($logs as $timestamp => $query){
+                        echo '['.$timestamp.']' . ' : ' . $query . '<br>';
+                    }                    
+                } 
+                catch (\Throwable $th) {
+                    echo 'No queries logged';
+                }
+            ?>
+            
+        </div>
         <form action="queries.php" method="post" autocomplete="off">
             <label for="query">Query : </label>
             <input type="text" name="query" id="query" autofocus>
