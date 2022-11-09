@@ -5,15 +5,17 @@
         header('Location: login.php');
         return;
     }
-    if (isset($_POST['product_name']) && isset($_POST['product_category']) && isset($_POST['product_price']) && isset($_POST['product_quantity']) && isset($_POST['action']) && isset($_POST['action_date']) && isset($_POST['block_no']) && isset($_POST['row_no'])) {
+    if (isset($_POST['product_name']) && isset($_POST['product_category']) && isset($_POST['product_price']) && isset($_POST['product_quantity']) && isset($_POST['block_no']) && isset($_POST['row_no'])) {
         $product_name = $_POST['product_name'];
         $product_category = $_POST['product_category'];
         $product_price = $_POST['product_price'];
         $product_quantity = $_POST['product_quantity'];
-        $action = $_POST['action'];
-        $action_date = $_POST['action_date'];
         $block_no = $_POST['block_no'];
         $row_no = $_POST['row_no'];
+        $action = 'A';
+        date_default_timezone_set('Asia/Kolkata');
+        $now = new DateTime();
+        $action_date = $now->format('Y-m-d');
 
         $details=array();
         if (isset($_POST['desc_attr1']) && isset($_POST['desc_val1'])) {
@@ -213,17 +215,7 @@
                     </div>
                 </div>
             </p>
-            <p>
-                <label for="act">Action: </label>
-                <select name="action" id="act" required>
-                    <option value="A">Add</option>
-                    <option value="R">Remove</option>
-                </select>
-            </p>
-            <p>
-                <label for="act_date">Action-date: </label>
-                <input type="date" name="action_date" id="act_date" required>
-            </p>
+            
             <p>
                 <label for="blk_no">Block-number: </label>
                 <input type="number" name="block_no" id="blk_no" min="0" required>

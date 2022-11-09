@@ -11,6 +11,7 @@
         $query="SELECT * FROM users WHERE user_id = :user_id";
         $stmt=$pdo->prepare($query);
         $stmt->execute(array(':user_id' => $user_id));
+
         if($stmt->rowCount() == 0) {
             $_SESSION['message'] = 'Bad value for user_id';
             header('Location: users.php');
@@ -32,7 +33,8 @@
         header('Location: users.php');
         return;
     }
-    
+
+
 ?>
 
 <!DOCTYPE html>

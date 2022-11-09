@@ -22,7 +22,11 @@
         $category = htmlentities($row['category']);
         $price = htmlentities($row['price']);
         $quantity = htmlentities($row['quantity']);
-        $action = htmlentities($row['action']);
+        $action_map = array(
+            'A' => 'Add',
+            'U' => 'Update',
+        );
+        $action = htmlentities($action_map[$row['action']]);
         $action_date = htmlentities($row['action_date']);
         $block_no = htmlentities($row['block_no']);
         $row_no = htmlentities($row['row_no']);

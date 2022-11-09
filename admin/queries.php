@@ -17,7 +17,7 @@
             $stmt = $pdo->prepare($_SESSION['query']);
             $stmt->execute();
             
-            // echo $stmt->debug_print_backtrace();
+            // echo $stmt->debugDumpParams();
 
             $_SESSION['query_status'] = 'success';
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
