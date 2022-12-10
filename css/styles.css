@@ -1,12 +1,30 @@
+body{
+    background-image: url("/warehouse/img/bg-01.jpg");
+    background-color: rgb(33, 37, 41);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
 }
 table, caption, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
+    background-color: rgb(220, 220, 220);
+    border: 3px solid black;
+    border-collapse: separate;
 }
+th, td {
+    border-radius: 2vw 1vw 2vw 1vw;
+}
+td {
+    background-color: white !important;
+}
+
+
 
 .productdetails_image{
     max-width: 25%;
@@ -28,4 +46,7 @@ table, caption, th, td {
     border: 1px solid black;
     height: 50%;
 }
+
+
+
 

@@ -16,39 +16,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
+    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
     <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
     <link rel="manifest" href="/warehouse/img/site.webmanifest">
-    <script src="#"></script>
+    <script src="/warehouse/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
     <title>Warehouse Management system</title>
 </head>
-<body>
+<!-- <body>
     <header>Order Management</header>
     <div id="msg">
-        <?php 
-           if (isset($_SESSION['message'])) {
-            echo $_SESSION['message'];
-            unset($_SESSION['message']);
-            } 
-        ?>
+        
     </div>
     <div>
         <table>
-            <tr>
+            <tr> -->
+<body class="text-center d-flex justify-content-center">
+<main class="px-0 m-auto">
+        <?php 
+            if (isset($_SESSION['message'])) {
+            echo ('<div id="msg" class="alert alert-warning alert-dismissible fade show" role="alert">'.
+                    $_SESSION['message'].
+                    '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'.
+                '</div>');      
+            unset($_SESSION['message']);
+            } 
+        ?>
+
+    <div class="container px-0">
+    <h1 class="h3 my-3 fw-normal">My Orders</h1>
+            <table class="table p-2">
+                <thead class="table-dark">
+                <tr class="text-center">
                 <th>Order ID</th>
                 <th>Product Name</th>
                 <th>Quantity</th>
                 <th>Date</th>
                 <th>Time</th>
-                <th>Status</th>
                 <th colspan="3">Actions</th>
             </tr>
+        </thead>
+        <tbody class="align-middle">    <!--align vertically center-->
             <?php
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     echo "<tr><td>";
@@ -62,34 +78,38 @@
                     echo("</td><td>");
                     echo($row['time']);
                     echo("</td><td>");
-                    echo($status_map[$row['status']]);
-                    echo("</td><td>");
                     echo('<form action="orderdetails.php" method="get">
                                 <input type="hidden" name="order_id" value="'.$row['order_id'].'">
-                                <input type="submit" name="view" value="View">
+                                <input type="submit" class="w-100 btn btn-lg btn-dark" name="view" value="View">
                             </form>');
-                    echo("</td><td>");
+                    echo("</td>");
                     if ($row['status'] == 'P') {
-                        echo('<form action="confirmorder.php" method="post">
-                                <input type="hidden" name="order_id" value="'.$row['order_id'].'">
-                                <input type="submit" name="confirm" value="Confirm">
-                            </form>');
+                        echo('<td>
+                                <form action="confirmorder.php" method="post">
+                                    <input type="hidden" name="order_id" value="'.$row['order_id'].'">
+                                    <input type="submit" class="w-100 btn btn-lg btn-dark" name="confirm" value="Confirm">
+                                </form>
+                            </td>
+                            <td>
+                                <form action="rejectorder.php" method="post">
+                                    <input type="hidden" name="order_id" value="'.$row['order_id'].'">
+                                    <input type="submit" class="w-100 btn btn-lg btn-dark" name="reject" value="Reject">
+                                </form>
+                            </td>');
                     }
-                    echo("</td><td>");
-                    if ($row['status'] == 'P') {
-                        echo('<form action="rejectorder.php" method="post">
-                                <input type="hidden" name="order_id" value="'.$row['order_id'].'">
-                                <input type="submit" name="reject" value="Reject">
-                            </form>');
+                    else {
+                        echo('<td colspan="2">'.$status_map[$row['status']].'</td>');
                     }
-                    echo("</td></tr>");
+                    echo("</tr>");
                 }
             ?>
+        </tbody>
         </table>
     </div>
-    <div>
-        <button onclick="location.href='dashboard.php'; return false;">Back to Home</button>
+    <div  class="pt-5">
+        <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='dashboard.php'; return false;">Back to Home</button>
     </div> 
-
+    
+</main>
 </body>
 </html>

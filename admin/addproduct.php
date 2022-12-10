@@ -122,36 +122,35 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="#">
+
+    <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/warehouse/css/styles.css">
+    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
     <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
     <link rel="manifest" href="/warehouse/img/site.webmanifest">
-    <script src="#"></script>
+    <script src="/warehouse/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
     <title>Warehouse Management system</title>
 </head>
-<body>
+
+<!-- <body>
     <header>Add Product</header>
     <div id="msg">
-        <?php 
-           if (isset($_SESSION['message'])) {
-            echo $_SESSION['message'];
-            unset($_SESSION['message']);
-            } 
-        ?>
+        
     </div>
     <div>
         <form action="addproduct.php" method="POST" enctype="multipart/form-data">
-            <p>
+            <div>
                 <label for="p_name">Product Name: </label>
                 <input type="text" name="product_name" id="p_name" required>
-            </p>
-            <p>
+            </div>
+            <div>
                 <label for="cat">Product Category:</label>
                 <select name="product_category" id="cat" required>
                     <option value="Electronics">Electronics</option>
@@ -161,78 +160,255 @@
                     <option value="Furniture">Furniture</option>
                     <option value="Others">Others</option>
                 </select>
-            </p>
-            <p>
+            </div>
+            <div>
                 <label for="p_price">Product Price: </label>
                 <input type="number" name="product_price" id="p_price" min="0" required>
-            </p>
-            <p>
+            </div>
+            <div>
                 <label for="p_quantity">Product Quantity: </label>
                 <input type="number" name="product_quantity" id="p_quantity" min="0" required>
-            </p>
-            <p>
+            </div>
+            <div>
                 <div>
                     Product Details
                     <div>
-                        <p>
+                        <div>
                             <label for="attr1">1.</label>
                             <input type="text" name="desc_attr1" id="attr1" placeholder="Attribute 1"> : 
                             <input type="text" name="desc_val1" id="val1" placeholder="Value 1">
-                        </p>
-                        <p>
+                        </div>
+                        <div>
                             <label for="attr2">2.</label>
                             <input type="text" name="desc_attr2" id="attr2" placeholder="Attribute 2"> : 
                             <input type="text" name="desc_val2" id="val2" placeholder="Value 2">
-                        </p>
-                        <p>
+                        </div>
+                        <div>
                             <label for="attr3">3.</label>
                             <input type="text" name="desc_attr3" id="attr3" placeholder="Attribute 3"> : 
                             <input type="text" name="desc_val3" id="val3" placeholder="Value 3">
-                        </p>
-                        <p>
+                        </div>
+                        <div>
                             <label for="attr4">4.</label>
                             <input type="text" name="desc_attr4" id="attr4" placeholder="Attribute 4"> : 
                             <input type="text" name="desc_val4" id="val4" placeholder="Value 4">
-                        </p>
-                        <p>
+                        </div>
+                        <div>
                             <label for="attr5">5.</label>
                             <input type="text" name="desc_attr5" id="attr5" placeholder="Attribute 5"> : 
                             <input type="text" name="desc_val5" id="val5" placeholder="Value 5">
-                        </p>
+                        </div>
                     </div>
                 </div>
                 <div>
                     Additional Details
                     <div>
-                        <p>
+                        <div>
                             <label for="p_image">Product Image: </label>
                             <input type="file" name="product_image" id="p_image">
-                        </p>
-                        <p>
+                        </div>
+                        <div>
                             <label for="p_desc">Product Description: </label><br>
                             <textarea name="product_desc" id="p_desc" cols="30" rows="10"></textarea>
-                        </p>
+                        </div>
                     </div>
                 </div>
-            </p>
+            </div>
             
-            <p>
+            <div>
                 <label for="blk_no">Block-number: </label>
                 <input type="number" name="block_no" id="blk_no" min="0" required>
-            </p>
-            <p>
+            </div>
+            <div>
                 <label for="row_no">Row-number: </label>
                 <input type="number" name="row_no" id="row_no" min="0" required>
-            </p>
-            <p>
+            </div>
+            <div>
                 <input type="submit" value="Add Product">
                 <button onclick="location.href='addproducts.php'; return false;">Clear</button>
-            </p>
+            </div>
         </form>
     </div>
     <div>
         <button onclick="location.href='products.php'; return false;">Back</button>
     </div>
 
+</body> -->
+
+<body class="text-center d-flex justify-content-center">
+    <main class="m-auto p-5">
+        <?php 
+            if (isset($_SESSION['message'])) {
+            echo ('<div id="msg" class="alert alert-warning alert-dismissible fade show" role="alert">'.
+                    $_SESSION['message'].
+                    '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'.
+                '</div>');      
+            unset($_SESSION['message']);
+            } 
+        ?>
+        <div class="container ">
+            <div class="row d-flex justify-content-center">
+                <div class="col-12 col-md-10">
+                    <form action="addproduct.php" method="POST" enctype="multipart/form-data">
+                        <h1 class="h3 mb-3 fw-normal">Add Product</h1>
+                        <div class="form-floating">
+                            <input type="text" class="form-control mt-2" name="product_name" id="p_name"
+                                placeholder="Product Name" required>
+                            <label for="p_name">Product Name</label>
+                        </div>
+                        <div class="form-floating">
+                            <input class="form-control mt-2" list="categoryOptions" id="cat"
+                                placeholder="Product Category" required>
+                            <label name="product_category" for="cat" class="form-label">Product Category</label>
+                            <datalist id="categoryOptions" class="w-100">
+                                <option value="Electronics">
+                                <option value="Clothing">
+                                <option value="Grocery">
+                                <option value="Stationary">
+                                <option value="Furniture">
+                                <option value="Others">
+                            </datalist>
+                        </div>
+                        <div class="form-floating">
+                            <input type="number" class="form-control mt-2" name="product_price" id="p_price" min="0"
+                                placeholder="Product Price" required>
+                            <label for="p_price">Product Price</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="number" class="form-control mt-2" name="product_quantity" id="p_quantity"
+                                min="0" placeholder="Product Quantity" required>
+                            <label for="p_quantity">Product Quantity</label>
+                        </div>
+                        <div>
+                            <div>
+                                <div class="mt-4">Product Details</div>
+                                <div>
+                                    <div class="container px-0">
+                                        <!-- <label for="attr1">1.</label> -->
+                                        <div class="row g-0 mt-2">
+                                            <div class="col form-floating">
+                                                <input type="text" class="form-control" name="desc_attr1"
+                                                    id="attr1" placeholder="Attribute 1">
+                                                <label for="attr1">Attribute 1</label>
+                                            </div>
+                                            <div class="col form-floating">
+                                                <input type="text" class="form-control" name="desc_val1" id="val1"
+                                                    placeholder="Value 1">
+                                                <label for="val1">Value 1</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="container px-0">
+                                        <!-- <label for="attr2">2.</label> -->
+                                        <div class="row g-0 mt-2">
+                                            <div class="col form-floating">
+                                                <input type="text" class="form-control" name="desc_attr2"
+                                                    id="attr2" placeholder="Attribute 2">
+                                                <label for="attr2">Attribute 2</label>
+                                            </div>
+                                            <div class="col form-floating">
+                                                <input type="text" class="form-control" name="desc_val2" id="val2"
+                                                    placeholder="Value 2">
+                                                <label for="val2">Value 2</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="container px-0">
+                                        <!-- <label for="attr2">2.</label> -->
+                                        <div class="row g-0 mt-2">
+                                            <div class="col form-floating">
+                                                <input type="text" class="form-control" name="desc_attr3"
+                                                    id="attr3" placeholder="Attribute 3">
+                                                <label for="attr3">Attribute 3</label>
+                                            </div>
+                                            <div class="col form-floating">
+                                                <input type="text" class="form-control" name="desc_val3"
+                                                    id="val3" placeholder="Value 3">
+                                                <label for="val3">Value 3</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="container px-0">
+                                        <!-- <label for="attr2">2.</label> -->
+                                        <div class="row g-0 mt-2">
+                                            <div class="col form-floating">
+                                                <input type="text" class="form-control" name="desc_attr4"
+                                                    id="attr4" placeholder="Attribute 4">
+                                                <label for="attr4">Attribute 4</label>
+                                            </div>
+                                            <div class="col form-floating">
+                                                <input type="text" class="form-control" name="desc_val4"
+                                                    id="val4" placeholder="Value 4">
+                                                <label for="val4">Value 4</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="container px-0">
+                                        <!-- <label for="attr2">2.</label> -->
+                                        <div class="row g-0 mt-2">
+                                            <div class="col form-floating">
+                                                <input type="text" class="form-control"
+                                                    name="desc_attr5" id="attr5" placeholder="Attribute 5">
+                                                <label for="attr5">Attribute 5</label>
+                                            </div>
+                                            <div class="col form-floating">
+                                                <input type="text" class="form-control"
+                                                    name="desc_val5" id="val5" placeholder="Value 5">
+                                                <label for="val5">Value 5</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="mt-4">Additional Details</div>
+                                <div>
+                                    <div>
+                                        <div class="row mt-2">
+                                            <label for="p_image" class="col-sm-4 col-form-label-md py-0 text-start">Product Image</label>
+                                            <div class="col-sm-8">
+                                                <input type="file" class="form-control" name="product_image" id="p_image" placeholder="Product Image">
+                                            </div>  
+                                        </div>
+                                        
+                                        <div class="form-floating mt-2 mb-10 h-4">
+                                            <textarea class="form-control" name="product_desc"
+                                                id="p_desc" rows="100" placeholder="Product
+                                                Description" style="height: 200px"></textarea>
+                                            <label for="p_desc" class="form-label">Product Description</label><br>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-floating mt-2">
+                                            <input type="number" class="form-control" name="block_no"
+                                                id="blk_no" min="0" placeholder="Block-number" required>
+                                            <label for="blk_no" class="form-label">Block-number</label>
+                                        </div>
+                                        <div class="form-floating mt-2">
+                                            <input type="number" class="form-control" name="row_no" id="row_no"
+                                                min="0" placeholder="Row-number" required>
+                                            <label for="row_no" class="form-label">Row-number</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            
+
+                        <input type="submit" class="w-100 btn btn-lg btn-dark mt-4"
+                            value="Add Product">
+                        <button class="w-100 btn btn-lg btn-dark mt-2"
+                            onclick="location.href='addproduct.php'; return false;">Clear</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="pt-5">
+            <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4"
+                onclick="location.href='products.php'; return false;">Back</button>
+        </div>
+    </main>
+
 </body>
+
 </html>

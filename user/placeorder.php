@@ -97,68 +97,89 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
+    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
     <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
     <link rel="manifest" href="/warehouse/img/site.webmanifest">
-    <script src="#"></script>
+    <script src="/warehouse/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
     <title>Warehouse Management system</title>
 </head>
-<body>
-    <header>Order Page</header>
-    <div id="msg">
+
+<body class="text-center d-flex justify-content-center">
+<main class="px-0 m-auto">
         <?php 
-           if (isset($_SESSION['message'])) {
-            echo $_SESSION['message'];
+            if (isset($_SESSION['message'])) {
+            echo ('<div id="msg" class="alert alert-warning alert-dismissible fade show" role="alert">'.
+                    $_SESSION['message'].
+                    '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'.
+                '</div>');      
             unset($_SESSION['message']);
             } 
         ?>
-    </div>
-        <table>
+
+<div class="container px-0">
+    <h1 class="h3 my-3 fw-normal">Place Order</h1>
+            <table class="table p-2">
+                <tbody class="align-middle">    <!--align vertically center-->
             <tr>
-                <td>
+                <th class="table-dark">
                     Product Name
-                </td>
+                </th>
                 <td>
                     <?php echo $product_name; ?>
                 </td>
             </tr>
             <tr>
-                <td>
+                <th class="table-dark">
                     Available Quantity
-                </td>
+                </th>
                 <td>
                     <?php echo $available_quantity; ?>
                 </td>
             </tr>
             <tr>
-                <td>
+                <th class="table-dark">
                     Price per unit
-                </td>
+                </th>
                 <td>
                     <?php echo $price; ?>
                 </td>
+                </tr>
+                </tbody>
         </table>
-        <div>
+        </div>
+        <div class="container ">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10">
             <form action="placeorder.php" method="post">
-                <p>
-                    <label for="quantity">Enter Quantity</label>
-                    <input type="number" name="quantity" id="quantity" min="1" max="<?php echo $available_quantity; ?>" required autofocus>
-                    
-                </p>
-                <p>
+                <div class="mt-4">
+                <div class="row">
+                    <label for="quantity" class="col-sm-6 col-form-label-lg py-0 text-start">Enter Quantity</label>
+                    <div class="col-sm-6">
+                    <input type="number" class="form-control" name="quantity" id="quantity" min="1" max="<?php echo $available_quantity; ?>" required autofocus>
+                    </div>
+                </div>
+        </div>
+        
+    
+                
                     <input type="hidden" name="order_confirm" id="order_confirm" value="0">
-                    <input type="submit" value="Place Order" onclick="order_confirm.value='1';">
-                    <button onclick="location.href='products.php'; return false;">Cancel</button>
-                </p>
+                    <input type="submit" class="w-100 btn btn-lg btn-dark mt-4" value="Place Order" onclick="order_confirm.value='1';">
+                    <button class="w-100 btn btn-lg btn-dark mt-2 mb-4" onclick="location.href='products.php'; return false;">Cancel</button>
+                
             </form>
         </div>
     </div>
-    <div>
-        <button onclick="location.href='dashboard.php'; return false;">Dashboard</button>
     </div>
-     
+    <div  class="pt-5">
+        <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='dashboard.php'; return false;">Dashboard</button>
+    </div>
+    </main>  
 </body>
 </html>

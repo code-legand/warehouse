@@ -14,35 +14,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
+    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
     <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
     <link rel="manifest" href="/warehouse/img/site.webmanifest">
-    <script src="#"></script>
+    <script src="/warehouse/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
     <title>Warehouse Management system</title>
 </head>
-<body>
+<!-- <body>
     <header>Order Management</header>
     <div id="msg">
-        <?php 
-           if (isset($_SESSION['message'])) {
-            echo $_SESSION['message'];
-            unset($_SESSION['message']);
-            } 
-        ?>
+        
     </div>
     <div>
         <div>
             <button onclick="location.href='addproduct.php';"">Add Product</button>
         </div>
         <table>
-            <tr>
-                <th>Storage ID</th>
+            <tr> -->
+            <body class="text-center d-flex justify-content-center">
+<main class="px-0 m-auto">
+        <?php 
+            if (isset($_SESSION['message'])) {
+            echo ('<div id="msg" class="alert alert-warning alert-dismissible fade show" role="alert">'.
+                    $_SESSION['message'].
+                    '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'.
+                '</div>');      
+            unset($_SESSION['message']);
+            } 
+        ?>
+
+    <div class="container px-0">
+    <h1 class="h3 my-3 fw-normal">Product Management</h1>
+    <div>
+            <button class="w-100 btn btn-lg btn-dark mb-4" onclick="location.href='addproduct.php';"">Add Product</button>
+        </div>
+            <table class="table p-2">
+                <thead class="table-dark">
+                <tr class="text-center">
+            <th>Storage ID</th>
                 <th>Product Name</th>
                 <th>Category</th>
                 <th>Price</th>
@@ -51,6 +69,8 @@
                 <th>Row No</th>
                 <th colspan="3">Operations</th>
             </tr>
+        </thead>
+        <tbody class="align-middle">
             <?php
                 while($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
                     echo "<tr><td>";
@@ -70,25 +90,27 @@
                     echo "</td><td>";
                     echo '<form action="productdetails.php">
                             <input type="hidden" name="storage_id" value="'.$row['storage_id'].'">
-                            <input type="submit" value="View">
+                            <input type="submit" class="w-100 btn btn-lg btn-dark" value="View">
                             </form>';
                     echo "</td><td>";
                     echo '<form action="updateproduct.php" method="POST">
                             <input type="hidden" name="storage_id" value="'.$row['storage_id'].'">
-                            <input type="submit" value="Edit">
+                            <input type="submit" class="w-100 btn btn-lg btn-dark" value="Edit">
                             </form>';
                     echo "</td><td>";
                     echo '<form action="deleteproduct.php" method="POST">
                             <input type="hidden" name="storage_id" value="'.$row['storage_id'].'">
-                            <input type="submit" value="Delete">
+                            <input type="submit" class="w-100 btn btn-lg btn-dark" value="Delete">
                             </form>';
                     echo "</td></tr>";
                 }
             ?>
         </table>
     </div>
-    <div>
-        <button onclick="location.href='dashboard.php'; return false;">Back to Home</button>
+
+    </tbody>
+    <div class="pt-5">
+        <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='dashboard.php'; return false;">Back to Home</button>
     </div> 
 
 </body>

@@ -60,67 +60,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="#">
+
+    <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/warehouse/css/styles.css">
+    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
     <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
     <link rel="manifest" href="/warehouse/img/site.webmanifest">
-    <script src="#"></script>
+    <script src="/warehouse/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
     <title>Warehouse Management system</title>
 </head>
-<body>
-    <header>Update Profile</header>
-    <div id="msg">
+
+<body class="text-center d-flex justify-content-center">
+    <main class="m-auto p-5">
         <?php 
-           if (isset($_SESSION['message'])) {
-            echo $_SESSION['message'];
+            if (isset($_SESSION['message'])) {
+            echo ('<div id="msg" class="alert alert-warning alert-dismissible fade show" role="alert">'.
+                    $_SESSION['message'].
+                    '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'.
+                '</div>');      
             unset($_SESSION['message']);
             } 
         ?>
-    </div>
-    <div>
-        <form action="updateprofile.php" method="post">
-            <p>
+
+<div class="container ">
+            <div class="row d-flex justify-content-center">
+                <div class="col-12 col-md-10">
+                    <form action="updateprofile.php" method="post">
+                        
+                        <h1 class="h3 mb-3 fw-normal">Update Profile</h1>
+            <div class="form-floating">
+                <input type="text" class="form-control" name="username" id="uname" required value="<?= $user_name ?>" autofocus>
                 <label for="uname">User Name: </label>
-                <input type="text" name="username" id="uname" required value="<?= $user_name ?>">
-            </p>
-            <p>
+
+            </div>
+            <div class="form-floating mt-2">
+                <input type="email" class="form-control" name="email" id="mail" required value="<?= $email ?>">
                 <label for="mail">Email: </label>
-                <input type="email" name="email" id="mail" required value="<?= $email ?>">
-            </p>
-            <p>
+
+            </div>
+            <div class="form-floating mt-2">
+                <input type="tel" class="form-control" name="phone" id="phone" required value="<?= $phone ?>">
                 <label for="phone">Phone: </label>
-                <input type="tel" name="phone" id="phone" required value="<?= $phone ?>">
-            </p>
-            <p>
+
+            </div>
+            <div class="form-floating mt-2">
+                <input type="text" class="form-control" name="street" id="street" required value="<?= $street ?>">
                 <label for="street">Street: </label>
-                <input type="text" name="street" id="street" required value="<?= $street ?>">
-            </p>
-            <p>
+
+            </div>
+            <div class="form-floating mt-2">
+                <input type="text" class="form-control" name="city" id="city" required value="<?= $city ?>">
                 <label for="city">City: </label>
-                <input type="text" name="city" id="city" required value="<?= $city ?>">
-            </p>
-            <p>
+
+            </div>
+            <div class="form-floating mt-2">
+                <input type="text" class="form-control" name="state" id="state" required value="<?= $state ?>">
                 <label for="state">State: </label>
-                <input type="text" name="state" id="state" required value="<?= $state ?>">
-            </p>
-            <p>
+
+            </div>
+            <div class="form-floating mt-2">
+                <input type="number" class="form-control" name="zipcode" id="zip" min="100000" max="999999" required value="<?= $zip_code ?>">
                 <label for="zip">Zip Code: </label>
-                <input type="number" name="zipcode" id="zip" min="100000" max="999999" required value="<?= $zip_code ?>">
-            </p>
-            <p>
+
+            </div>
+            
                 <input type="hidden" name="update_confirm" id="update_confirm" value="0">
-                <input type="submit" name="update" value="Update" onclick="update_confirm.value='1';">
-                <button onclick="location.href='updateprofile.php'; return false">Reset</button>
-            </p>
+                <input type="submit" class="w-100 btn btn-lg btn-dark mt-4" name="update" value="Update" onclick="update_confirm.value='1';">
+                <button class="w-100 btn btn-lg btn-dark mt-2 mb-4" onclick="location.href='updateprofile.php'; return false">Reset</button>
+            
         </form>
+        </div>
+        </div>
     </div>
-    <div>
-        <button onclick="location.href='dashboard.php'; return false;">Dashboard</button>
-    </div>   
+    <div  class="pt-5">
+        <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='dashboard.php'; return false;">Dashboard</button>
+    </div>
+    </main>
 </body>
 </html>

@@ -6,7 +6,7 @@
         return;
     }
     require_once 'connect.php';
-    $query = "SELECT storage_id, product_name, category, price, quantity FROM storage;";
+    $query = "SELECT storage_id, product_name, category, price, quantity, description FROM storage;";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
     $query2 = "SELECT storage_id, sum(quantity) as blocked_quantity FROM orders where status = 'P' GROUP BY storage_id;";
@@ -46,6 +46,7 @@
     <div>
         <table>
             <tr>
+                <th>Product Image</th>
                 <th>Product Name</th>
                 <th>Category</th>
                 <th>Price</th>
@@ -54,14 +55,23 @@
             </tr>
             <?php
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $details = $row['description'];
+                    $details = json_decode($details, true);
+                    $product_image_path = $details['product_image'];
+                    $product_image = explode('/', $product_image_path);
+                    $product_image = '/warehouse/uploads/images/'.end($product_image);
+
                     echo "<tr><td>";
+                    echo '<img src="'.$product_image.'" alt="product image" width="100" height="100">';
+                    echo "</td><td>";
                     echo($row['product_name']);
                     echo "</td><td>";
                     echo($row['category']);
                     echo "</td><td>";
                     echo($row['price']);
                     echo "</td><td>";
-                    echo($row['quantity'] - $blocked_quantity[$row['storage_id']]);
+                    echo($row['quantity'] - ($blocked_quantity[$row['storage_id']] ?? 0));      //null collaesce operator
+                    
                     echo "</td><td>";
                     echo('<form action="productdetails.php" method="get">
                             <input type="hidden" name="storage_id" value="'.$row['storage_id'].'">
