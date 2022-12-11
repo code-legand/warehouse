@@ -36,70 +36,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="#">
+
+    <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/warehouse/css/styles.css">
+    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
     <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
     <link rel="manifest" href="/warehouse/img/site.webmanifest">
-    <script src="#"></script>
+    <script src="/warehouse/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
     <title>Warehouse Management system</title>
 </head>
-<body>
+
+<body class="text-center d-flex justify-content-center">
+    <main class="m-auto p-5">
+        <?php 
+            if (isset($_SESSION['message'])) {
+            echo ('<div id="msg" class="alert alert-warning alert-dismissible fade show" role="alert">'.
+                    $_SESSION['message'].
+                    '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'.
+                '</div>');      
+            unset($_SESSION['message']);
+            } 
+        ?>
+
+
+        <div class="container ">
+            <div class="row d-flex justify-content-center">
+                <div class="col-12 col-md-10">
+                    <form action="signup.php" method="post">
+                        <!-- <img class="mb-4" src="/warehouse/img/android-chrome-512x512.png" alt="logo-image" width="72"
+                            height="57"> -->
+                        <h1 class="h3 mb-3 fw-normal">Add User</h1>
+
+<!-- <body>
     <div>
-       <?php 
-        if(isset($_SESSION['message'])) {
-            echo "<p>".$_SESSION['message']."</p>";
-            unset($_SESSION['message']); 
-        }
-       ?>
+       
     </div>
     <header>Add User</header>  
     <div>
-        <form action="adduser.php" method="post">
-            <p>
-                <label for="uname">User Name: </label>
-                <input type="text" name="username" id="uname" required>
-            </p>
-            <p>
-                <label for="pass">Password: </label>
-                <input type="password" name="passwd" id="pass" required>
-            </p>
-            <p>
-                <label for="mail">Email: </label>
-                <input type="email" name="email" id="mail" required>
-            </p>
-            <p>
-                <label for="phone">Phone: </label>
-                <input type="tel" name="phone" id="phone" required>
-            </p>
-            <p>
-                <label for="street">Street: </label>
-                <input type="text" name="street" id="street" required>
-            </p>
-            <p>
-                <label for="city">City: </label>
-                <input type="text" name="city" id="city" required>
-            </p>
-            <p>
-                <label for="state">State: </label>
-                <input type="text" name="state" id="state" required>
-            </p>
-            <p>
-                <label for="zip">Zip Code: </label>
-                <input type="number" name="zipcode" id="zip" min="100000" max="999999" required>
-            </p>
-            <p>
-                <input type="submit" name="adduser" value="Add User">
-                <button onclick="location.href='adduser.php'; return false">Clear</button>
-            </p>
+        <form action="adduser.php" method="post"> -->
+            <div class="form-floating">
+                <input type="text" class="form-control mt-2" name="username" id="uname" placeholder="User Name" required>
+                <label for="uname">User Name</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control mt-2" name="passwd" id="pass" placeholder="Password" required>
+                <label for="pass">Password</label>
+            </div>
+            <div class="form-floating">
+                <input type="email" class="form-control mt-2" name="email" id="mail" placeholder="Email" required>
+                <label for="mail">Email</label>
+            </div>
+            <div class="form-floating">
+                <input type="tel" class="form-control mt-2" name="phone" id="phone" placeholder="Phone" required>
+                <label for="phone">Phone</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control mt-2" name="street" id="street" placeholder="Street" required>
+                <label for="street">Street</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control mt-2" name="city" id="city" placeholder="City" required>
+                <label for="city">City</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control mt-2" name="state" id="state" placeholder="State" required>
+                <label for="state">State</label>
+            </div>
+            <div class="form-floating">
+                <input type="number" class="form-control mt-2" name="zipcode" id="zip" min="100000" max="999999" placeholder="Zip Code" required>
+                <label for="zip">Zip Code</label>
+            </div>
+
+            <input type="submit" class="w-100 btn btn-lg btn-dark mt-4" name="adduser" value="Add User">
+            <button class="w-100 btn btn-lg btn-dark mt-2" onclick="location.href='adduser.php'; return false">Clear</button>
         </form>
     </div> 
-    <div>
-        <button onclick="location.href='users.php'; return false">Back</button>
+    <div class="pt-5">
+        <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='users.php'; return false">Back</button>
     </div>
 </body>
 </html>

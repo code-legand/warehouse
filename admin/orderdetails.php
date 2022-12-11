@@ -47,7 +47,7 @@
     <div>
         <table> -->
 
-        <body class="text-center d-flex justify-content-center">
+<body class="text-center d-flex justify-content-center">
 <main class="px-0 m-auto">
         <?php 
             if (isset($_SESSION['message'])) {
@@ -60,7 +60,7 @@
         ?>
 
     <div class="container px-0">
-    <h1 class="h3 my-3 fw-normal">Order Details</h1>
+        <h1 class="h3 my-3 fw-normal">Order Details</h1>
             <table class="table p-2">
             <tbody class="align-middle">    <!--align vertically center-->
             <tr>

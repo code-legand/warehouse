@@ -11,9 +11,10 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
+    border: 0px !important;
 }
 table, caption, th, td {
-    background-color: rgb(220, 220, 220);
+    /* background-color: rgb(220, 220, 220); */
     border: 3px solid black;
     border-collapse: separate;
 }
@@ -41,11 +42,11 @@ td {
     border-radius: 5px;
 }
 
-#log-tab{
+/* #log-tab{
     display: none;
     border: 1px solid black;
     height: 50%;
-}
+} */
 
 
 

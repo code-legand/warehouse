@@ -45,7 +45,16 @@ body {
 }
 
 main{
-    background-color: #f5f5f5;
+    background-color: #f5f5f5 !important;
     opacity: 0.95;
     box-shadow: 0 0 100vw rgba(255, 255, 255, 1.0);
+
+ }
+
+ .scroll-enable{
+  overflow: auto;
+ }
+
+.scroll-disable{
+  overflow: hidden;
  }

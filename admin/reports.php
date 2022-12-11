@@ -19,16 +19,20 @@
         $query = "SELECT category, avg(price) as avg_price FROM storage GROUP BY category";
       }
       else if($_SESSION['query']==2){
-        $query = "SELECT category, count(*) as count FROM storage GROUP BY category";
+        // Number of orders for each product
+        $query = "SELECT s.product_name, count(o.quantity) as count FROM storage AS s JOIN orders AS o ON s.storage_id = o.storage_id GROUP BY s.product_name";
       }
       else if($_SESSION['query']==3){
-        $query = "SELECT category, sum(price) as sum_price FROM storage GROUP BY category";
+        // Customers who have bought more than 50,000 worth products
+        $query = "SELECT u.user_name, sum(s.price*o.quantity) as total FROM storage AS s JOIN orders AS o ON s.storage_id = o.storage_id JOIN users AS u ON o.user_id = u.user_id GROUP BY u.user_name HAVING total > 50000";
       }
       else if($_SESSION['query']==4){
-        $query = "SELECT category, min(price) as min_price FROM storage GROUP BY category";
+        // Customers who have ordered atleast 2 products of same category
+        $query = "SELECT u.user_name, s.category, count(s.category) as count FROM storage AS s JOIN orders AS o ON s.storage_id = o.storage_id JOIN users AS u ON o.user_id = u.user_id GROUP BY u.user_name, s.category HAVING count > 1";
       }
       else if($_SESSION['query']==5){
-        $query = "SELECT category, max(price) as max_price FROM storage GROUP BY category";
+        // Top 5 products with highest sales
+        $query = "SELECT s.product_name, sum(s.price*o.quantity) as total FROM storage AS s JOIN orders AS o ON s.storage_id = o.storage_id GROUP BY s.product_name, o.status HAVING o.status = 'C' ORDER BY total DESC LIMIT 5";
       }
       else{
         $_SESSION['message'] = 'Invalid query number';
@@ -55,16 +59,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
+    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
     <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
     <link rel="manifest" href="/warehouse/img/site.webmanifest">
+    <script src="/warehouse/js/bootstrap.min.js"></script>
     <script src="/warehouse/js/scripts.js"></script>
+
     <script src="/warehouse/js/charts.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -90,16 +98,16 @@
           <button onclick="location.href='reports.php?query=1';">Average price of all products in each category</button>
         </p>
         <p>
-          <button onclick="location.href='reports.php?query=2';"></button>
+          <button onclick="location.href='reports.php?query=2';">Number of orders for each product</button>
         </p>
         <p>
-          <button onclick="location.href='reports.php?query=3';"></button>
+          <button onclick="location.href='reports.php?query=3';">Customers who have bought more than 50,000 worth products</button>
         </p>
         <p>
-          <button onclick="location.href='reports.php?query=4';"></button>
+          <button onclick="location.href='reports.php?query=4';">Customers who have ordered atleast 2 products of same category</button>
         </p>
         <p>
-          <button onclick="location.href='reports.php?query=5';"></button>
+          <button onclick="location.href='reports.php?query=5';">Top 5 products with highest sales</button>
         </p>
       </div>
       <div>
@@ -131,21 +139,24 @@
 
       </div>
       <div>
-        <table>
-          <tr>
-            <th><?= $xlabel ?></th>
-            <th><?= $ylabel ?></th>
-          </tr>
           <?php
-            foreach ($rows as $row) {
-              echo "<tr>";
-              foreach ($row as $value) {
-                echo "<td>$value</td>";
-              }
-              echo "</tr>";
-            }
+            if (isset($rows)){
+                echo '<table>
+                        <tr>
+                        <th>'. $xlabel .'</th>
+                        <th>'. $ylabel .'</th>
+                        </tr>';
+                foreach ($rows as $row) {
+                    echo "<tr>";
+                    foreach ($row as $value) {
+                      echo "<td>$value</td>";
+                    }
+                    echo "</tr>";
+                }
+                echo "</table>";
+            }  
           ?>
-        </table>
+        
       </div>
       <div>
         <div id="chart_div" style="width: 100%; height: 500px;"></div>

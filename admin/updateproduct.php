@@ -188,6 +188,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
@@ -225,9 +226,9 @@
                             <label for="p_name">Product Name</label>
                         </div>
                         <div class="form-floating">
-                            <input class="form-control mt-2" list="categoryOptions" id="cat"
+                            <input list="categoryOptions" class="form-control mt-2" name="product_category" id="cat"
                                 placeholder="Product Category" required value="<?= $category ?>">
-                            <label name="product_category" for="cat" class="form-label">Product Category</label>
+                            <label for="cat" class="form-label">Product Category</label>
                             <datalist id="categoryOptions" class="w-100">
                                 <option value="Electronics">
                                 <option value="Clothing">

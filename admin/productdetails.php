@@ -53,128 +53,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
+    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
     <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
     <link rel="manifest" href="/warehouse/img/site.webmanifest">
-    <script src="#"></script>
+    <script src="/warehouse/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
     <title>Warehouse Management system</title>
 </head>
-<body>
+
+<body class="text-center d-flex justify-content-center">
+<main class="px-0 m-auto">
+        <?php 
+            if (isset($_SESSION['message'])) {
+            echo ('<div id="msg" class="alert alert-warning alert-dismissible fade show" role="alert">'.
+                    $_SESSION['message'].
+                    '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'.
+                '</div>');      
+            unset($_SESSION['message']);
+            } 
+        ?>
+
+    <div class="container px-0">
+    <h1 class="h3 my-3 fw-normal">Order Details</h1>
+            <table class="table p-2">
+            <tbody class="align-middle">    <!--align vertically center-->
+<!-- <body>
     <header>Product Details</header>
     <div id="msg">
-        <?php 
-           if (isset($_SESSION['message'])) {
-            echo $_SESSION['message'];
-            unset($_SESSION['message']);
-            }
-        ?>
+        
     </div>
     <div>
-        <table>
-            <caption><?= $storage_id ?></caption>
+        <table> -->
+
             <tr>
+                <th class="table-dark">
+                    Storage Id
+                </th>
                 <td>
-                    Admin Id
+                    <?= $storage_id ?>
                 </td>
+            </tr>
+            <tr>
+                <th class="table-dark">
+                    Admin Id
+                </th>
                 <td>
                     <?= $admin_id ?>
                 </td>
             </tr>
             <tr>
-                <td>
+                <th class="table-dark">
                     Product Name
-                </td>
+                </th>
                 <td>
                     <?= $product_name ?>
                 </td>
             </tr>
             <tr>
-                <td>
+                <th class="table-dark">
                     Product Category
-                </td>
+                </th>
                 <td>
                     <?= $category ?>
                 </td>
             </tr>
             <tr>
-                <td>
+                <th class="table-dark">
                     Product Price
-                </td>
+                </th>
                 <td>
                     <?= $price ?>
                 </td>
             </tr>
             <tr>
-                <td>
+                <th class="table-dark">
                     Product Quantity
-                </td>
+                </th>
                 <td>
                     <?= $quantity ?>
                 </td>
             </tr>
             <?php
                 foreach ($p_details as $key => $value) {
-                    echo "<tr><td>$key</td><td>$value</td></tr>";
+                    echo '<tr><th class="table-dark">'.$key.'</th><td>'.$value.'</td></tr>';
                 }
             ?>
             <tr>
-                <td>
+                <th class="table-dark">
                     Product Image
-                </td>
+                </th>
                 <td>
                     <img src="<?= $product_image ?>" alt="<?= $product_name ?>" class="productdetails_image">
                 </td>
             </tr>
             <tr>
-                <td>
+                <th class="table-dark">
                     Product Description
-                </td>
+                </th>
                 <td>
                     <?= $product_desc ?>
                 </td>
             </tr>
             <tr>
-                <td>
+                <th class="table-dark">
                     Action
-                </td>
+                </th>
                 <td>
                     <?= $action ?>
                 </td>
             </tr>
             <tr>
-                <td>
+                <th class="table-dark">
                     Action Date
-                </td>
+                </th>
                 <td>
                     <?= $action_date ?>
                 </td>
             </tr>
             <tr>
-                <td>
+                <th class="table-dark">
                     Block number
-                </td>
+                </th>
                 <td>
                     <?= $block_no ?>
                 </td>
             </tr>
             <tr>
-                <td>
+                <th class="table-dark">
                     Row number
-                </td>
+                </th>
                 <td>
                     <?= $row_no ?>
                 </td>
+            </tr>
+        </tbody>
         </table>
     </div>
-    <div>
-        <button onclick="location.href='products.php'; return false;">Back</button>
+    <div class="pt-5">
+        <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='products.php'; return false;">Back</button>
     </div>
-
+</main>
 </body>
 </html>
