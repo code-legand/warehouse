@@ -66,22 +66,20 @@
                                         <div class="justify-content-center align-items-center">
                                             <img src="'.$product_image.'" alt="product image" width="225" height="225" class="p-4">
                                         </div>
-                                        <div class="card-body">
-                                            <p class="card-text">'.$row['product_name'].'</p>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="btn-group">
-                                                    <form action="productdetails.php" method="get">
-                                                        <input type="hidden" name="storage_id" value="'.$row['storage_id'].'">
-                                                        <input class="btn btn-lg btn-dark btn-outline-light" type="submit" value="View">
-                                                    </form>
-                                                    <form action="placeorder.php" method="post">
-                                                        <input type="hidden" name="storage_id" value="'.$row['storage_id'].'">
-                                                        <input class="btn btn-lg btn-dark btn-outline-light" type="submit" value="Order">
-                                                    </form>
-                                                </div>
-                                                <strong class="text-muted">₹'.$row['price'].'</strong>
+                                        <div class="card-body d-flex align-items-center flex-column mb-3">
+                                            <div class="p-2 card-text">'.$row['product_name'].'</div>
+                                            <div class="mt-auto p-2 d-flex justify-content-between align-items-center">
+                                                <form action="productdetails.php" method="get">
+                                                    <input type="hidden" name="storage_id" value="'.$row['storage_id'].'">
+                                                    <input class="btn btn-lg btn-dark btn-outline-light" type="submit" value="View">
+                                                </form>
+                                                <form action="placeorder.php" method="post">
+                                                    <input type="hidden" name="storage_id" value="'.$row['storage_id'].'">
+                                                    <input class="btn btn-lg btn-dark btn-outline-light" type="submit" value="Order">
+                                                </form>   
                                             </div>
-                                        </div>
+                                            <strong class="text-muted">₹'.$row['price'].'</strong>
+                                        </div>   
                                     </div>
                                 </div>';
                         }
