@@ -43,7 +43,7 @@
             <tr> -->
 
 <body class="text-center d-flex justify-content-center">
-    <main class="p-5 m-auto">
+    <main class="p-5 m-auto scroll-enable">
         <?php 
             if (isset($_SESSION['message'])) {
             echo ('<div id="msg" class="alert alert-warning alert-dismissible fade show" role="alert">'.
@@ -62,7 +62,7 @@
         </div>
 
         <div class="container px-0 scroll-enable">
-            <table class="table p-2">
+            <table class="table p-2 table-striped table-hover">
                 <thead class="table-dark">
                     <tr class="text-center">
                         <th>User ID</th>

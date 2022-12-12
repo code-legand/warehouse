@@ -122,50 +122,50 @@
                         <!-- <img class="mb-4" src="/warehouse/img/android-chrome-512x512.png" alt="logo-image" width="72"
                             height="57"> -->
                         <h1 class="h3 mb-3 fw-normal">Edit User Information</h1>
+                        <div class="form-floating">
+                            <input type="text" class="form-control mt-2" name="username" id="uname" placeholder="User Name" required value="<?= $user_name ?>">
+                            <label for="uname">User Name</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control mt-2" name="passwd" id="pass" placeholder="Password" required  value="<?= $password ?>">
+                            <label for="pass">Password</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="email" class="form-control mt-2" name="email" id="mail" placeholder="Email" required value="<?= $email ?>">
+                            <label for="mail">Email</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="tel" class="form-control mt-2" name="phone" id="phone" placeholder="Phone" required value="<?= $phone ?>">
+                            <label for="phone">Phone</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control mt-2" name="street" id="street" placeholder="Street" required value="<?= $street ?>">
+                            <label for="street">Street</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control mt-2" name="city" id="city" placeholder="City" required value="<?= $city ?>">
+                            <label for="city">City</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control mt-2" name="state" id="state" placeholder="State" required value="<?= $state ?>">
+                            <label for="state">State</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="number" class="form-control mt-2" name="zipcode" id="zip" min="100000" max="999999" placeholder="Zip Code" required value="<?= $zip_code ?>">
+                            <label for="zip">Zip Code</label>
+                        </div>
 
-
-            <div class="form-floating">
-                <input type="text" class="form-control mt-2" name="username" id="uname" placeholder="User Name" required value="<?= $user_name ?>">
-                <label for="uname">User Name</label>
+                        <input type="hidden" name="update_confirm" id="update_confirm" value="0">
+                        <input class="w-100 btn btn-lg btn-dark mt-4" type="submit" name="update" value="Update" onclick="update_confirm.value='1';">
+                        <button class="w-100 btn btn-lg btn-dark mt-2" onclick="location.href='updateuser.php'; return false">Reset</button>
+                    </form>
+                </div>
             </div>
-            <div class="form-floating">
-                <input type="password" class="form-control mt-2" name="passwd" id="pass" placeholder="Password" required  value="<?= $password ?>">
-                <label for="pass">Password</label>
-            </div>
-            <div class="form-floating">
-                <input type="email" class="form-control mt-2" name="email" id="mail" placeholder="Email" required value="<?= $email ?>">
-                <label for="mail">Email</label>
-            </div>
-            <div class="form-floating">
-                <input type="tel" class="form-control mt-2" name="phone" id="phone" placeholder="Phone" required value="<?= $phone ?>">
-                <label for="phone">Phone</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" class="form-control mt-2" name="street" id="street" placeholder="Street" required value="<?= $street ?>">
-                <label for="street">Street</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" class="form-control mt-2" name="city" id="city" placeholder="City" required value="<?= $city ?>">
-                <label for="city">City</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" class="form-control mt-2" name="state" id="state" placeholder="State" required value="<?= $state ?>">
-                <label for="state">State</label>
-            </div>
-            <div class="form-floating">
-                <input type="number" class="form-control mt-2" name="zipcode" id="zip" min="100000" max="999999" placeholder="Zip Code" required value="<?= $zip_code ?>">
-                <label for="zip">Zip Code</label>
-            </div>
-
-            <input type="hidden" name="update_confirm" id="update_confirm" value="0">
-            <input class="w-100 btn btn-lg btn-dark mt-4" type="submit" name="update" value="Update" onclick="update_confirm.value='1';">
-            <button class="w-100 btn btn-lg btn-dark mt-2" onclick="location.href='updateuser.php'; return false">Reset</button>
-
-        </form>
-    </div> 
-    <div class="pt-5">
-        <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='users.php'; return false">Back</button>
-    </div>
+        </div> 
+        <div class="pt-5">
+            <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='users.php'; return false">Back</button>
+        </div>
+    </main>
 </body>
 
 <!-- <body>

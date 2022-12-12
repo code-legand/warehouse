@@ -93,6 +93,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -112,7 +113,7 @@
 </head>
 
 <body class="text-center d-flex justify-content-center">
-<main class="px-0 m-auto">
+    <main class="p-5 m-auto">
         <?php 
             if (isset($_SESSION['message'])) {
             echo ('<div id="msg" class="alert alert-warning alert-dismissible fade show" role="alert">'.
@@ -123,63 +124,67 @@
             } 
         ?>
 
-<div class="container px-0">
-    <h1 class="h3 my-3 fw-normal">Place Order</h1>
-            <table class="table p-2">
-                <tbody class="align-middle">    <!--align vertically center-->
-            <tr>
-                <th class="table-dark">
-                    Product Name
-                </th>
-                <td>
-                    <?php echo $product_name; ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    Available Quantity
-                </th>
-                <td>
-                    <?php echo $available_quantity; ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    Price per unit
-                </th>
-                <td>
-                    <?php echo $price; ?>
-                </td>
-                </tr>
+        <div class="container px-0">
+            <h1 class="h3 my-3 fw-normal">Place Order</h1>
+            <table class="table p-2 table-striped table-hover">
+                <tbody class="align-middle">
+                    <!--align vertically center-->
+                    <tr>
+                        <th class="table-dark">
+                            Product Name
+                        </th>
+                        <td>
+                            <?php echo $product_name; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table-dark">
+                            Available Quantity
+                        </th>
+                        <td>
+                            <?php echo $available_quantity; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table-dark">
+                            Price per unit
+                        </th>
+                        <td>
+                            <?php echo $price; ?>
+                        </td>
+                    </tr>
                 </tbody>
-        </table>
+            </table>
         </div>
         <div class="container ">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10">
-            <form action="placeorder.php" method="post">
-                <div class="mt-4">
-                <div class="row">
-                    <label for="quantity" class="col-sm-6 col-form-label-lg py-0 text-start">Enter Quantity</label>
-                    <div class="col-sm-6">
-                    <input type="number" class="form-control" name="quantity" id="quantity" min="1" max="<?php echo $available_quantity; ?>" required autofocus>
-                    </div>
+                    <form action="placeorder.php" method="post">
+                        <div class="mt-4">
+                            <div class="row">
+                                <label for="quantity" class="col-sm-6 col-form-label-lg py-0 text-start">Enter
+                                    Quantity</label>
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control" name="quantity" id="quantity" min="1"
+                                        max="<?php echo $available_quantity; ?>" required autofocus>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="order_confirm" id="order_confirm" value="0">
+                        <input type="submit" class="w-100 btn btn-lg btn-dark mt-4" value="Place Order"
+                            onclick="order_confirm.value='1';">
+                        <button class="w-100 btn btn-lg btn-dark mt-2 mb-4"
+                            onclick="location.href='products.php'; return false;">Cancel</button>
+                    </form>
                 </div>
+            </div>
         </div>
-        
-    
-                
-                    <input type="hidden" name="order_confirm" id="order_confirm" value="0">
-                    <input type="submit" class="w-100 btn btn-lg btn-dark mt-4" value="Place Order" onclick="order_confirm.value='1';">
-                    <button class="w-100 btn btn-lg btn-dark mt-2 mb-4" onclick="location.href='products.php'; return false;">Cancel</button>
-                
-            </form>
+        <div class="pt-5">
+            <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4"
+                onclick="location.href='dashboard.php'; return false;">Dashboard</button>
         </div>
-    </div>
-    </div>
-    <div  class="pt-5">
-        <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='dashboard.php'; return false;">Dashboard</button>
-    </div>
-    </main>  
+    </main>
 </body>
+
 </html>

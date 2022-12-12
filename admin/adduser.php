@@ -79,45 +79,48 @@
     <header>Add User</header>  
     <div>
         <form action="adduser.php" method="post"> -->
-            <div class="form-floating">
-                <input type="text" class="form-control mt-2" name="username" id="uname" placeholder="User Name" required>
-                <label for="uname">User Name</label>
-            </div>
-            <div class="form-floating">
-                <input type="password" class="form-control mt-2" name="passwd" id="pass" placeholder="Password" required>
-                <label for="pass">Password</label>
-            </div>
-            <div class="form-floating">
-                <input type="email" class="form-control mt-2" name="email" id="mail" placeholder="Email" required>
-                <label for="mail">Email</label>
-            </div>
-            <div class="form-floating">
-                <input type="tel" class="form-control mt-2" name="phone" id="phone" placeholder="Phone" required>
-                <label for="phone">Phone</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" class="form-control mt-2" name="street" id="street" placeholder="Street" required>
-                <label for="street">Street</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" class="form-control mt-2" name="city" id="city" placeholder="City" required>
-                <label for="city">City</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" class="form-control mt-2" name="state" id="state" placeholder="State" required>
-                <label for="state">State</label>
-            </div>
-            <div class="form-floating">
-                <input type="number" class="form-control mt-2" name="zipcode" id="zip" min="100000" max="999999" placeholder="Zip Code" required>
-                <label for="zip">Zip Code</label>
-            </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control mt-2" name="username" id="uname" placeholder="User Name" required>
+                            <label for="uname">User Name</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control mt-2" name="passwd" id="pass" placeholder="Password" required>
+                            <label for="pass">Password</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="email" class="form-control mt-2" name="email" id="mail" placeholder="Email" required>
+                            <label for="mail">Email</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="tel" class="form-control mt-2" name="phone" id="phone" placeholder="Phone" required>
+                            <label for="phone">Phone</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control mt-2" name="street" id="street" placeholder="Street" required>
+                            <label for="street">Street</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control mt-2" name="city" id="city" placeholder="City" required>
+                            <label for="city">City</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control mt-2" name="state" id="state" placeholder="State" required>
+                            <label for="state">State</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="number" class="form-control mt-2" name="zipcode" id="zip" min="100000" max="999999" placeholder="Zip Code" required>
+                            <label for="zip">Zip Code</label>
+                        </div>
 
-            <input type="submit" class="w-100 btn btn-lg btn-dark mt-4" name="adduser" value="Add User">
-            <button class="w-100 btn btn-lg btn-dark mt-2" onclick="location.href='adduser.php'; return false">Clear</button>
-        </form>
-    </div> 
-    <div class="pt-5">
-        <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='users.php'; return false">Back</button>
-    </div>
+                        <input type="submit" class="w-100 btn btn-lg btn-dark mt-4" name="adduser" value="Add User">
+                        <button class="w-100 btn btn-lg btn-dark mt-2" onclick="location.href='adduser.php'; return false">Clear</button>
+                    </form>
+                </div>
+            </div>
+        </div>     
+        <div class="pt-5">
+            <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='users.php'; return false">Back</button>
+        </div>
+    </main>
 </body>
 </html>

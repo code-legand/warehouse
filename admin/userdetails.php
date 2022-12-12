@@ -39,6 +39,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,8 +63,9 @@
     </div>
     <div>
         <table> -->
+
 <body class="text-center d-flex justify-content-center">
-<main class="px-0 m-auto">
+    <main class="p-5 m-auto scroll-enable">
         <?php 
             if (isset($_SESSION['message'])) {
             echo ('<div id="msg" class="alert alert-warning alert-dismissible fade show" role="alert">'.
@@ -74,87 +76,95 @@
             } 
         ?>
 
-    <div class="container px-0">
-    <h1 class="h3 my-3 fw-normal">User Details</h1>
-            <table class="table p-2">
-            <tbody class="align-middle">    <!--align vertically center-->
-            <tr>
-                <th class="table-dark">
-                    User ID
-                </th>
-                <td>
-                    <?= $user_id ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    User Name
-                </th>
-                <td>
-                    <?= $user_name ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    Street
-                </th>
-                <td>
-                    <?= $street ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    City
-                </th>
-                <td>
-                    <?= $city ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    State
-                </th>
-                <td>
-                    <?= $state ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    Zip-Code
-                </th>
-                <td>
-                    <?= $zip_code ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    Phone
-                </th>
-                <td>
-                    <?= $phone ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    Email
-                </th>
-                <td>
-                    <?= $email ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    Password
-                </th>
-                <td>
-                    <?= $password ?>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="pt-5">
-        <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='users.php'; return false;">Back</button>
-    </div> 
-
+        <div >
+            <h1 class="h3 my-3 fw-normal">User Details</h1>
+        </div>
+        <div class="container px-0 scroll-enable">
+            <div>
+                <table class="table p-2 table-striped table-hover">
+                    <tbody class="align-middle">
+                        <!--align vertically center-->
+                        <tr>
+                            <th class="table-dark">
+                                User ID
+                            </th>
+                            <td>
+                                <?= $user_id ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="table-dark">
+                                User Name
+                            </th>
+                            <td>
+                                <?= $user_name ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="table-dark">
+                                Street
+                            </th>
+                            <td>
+                                <?= $street ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="table-dark">
+                                City
+                            </th>
+                            <td>
+                                <?= $city ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="table-dark">
+                                State
+                            </th>
+                            <td>
+                                <?= $state ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="table-dark">
+                                Zip-Code
+                            </th>
+                            <td>
+                                <?= $zip_code ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="table-dark">
+                                Phone
+                            </th>
+                            <td>
+                                <?= $phone ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="table-dark">
+                                Email
+                            </th>
+                            <td>
+                                <?= $email ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="table-dark">
+                                Password
+                            </th>
+                            <td>
+                                <?= $password ?>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pt-5">
+                <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4"
+                    onclick="location.href='users.php'; return false;">Back</button>
+            </div>
+        </div>
+    </main>
 </body>
+
 </html>

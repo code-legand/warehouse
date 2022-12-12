@@ -49,7 +49,7 @@
 </head>
 
 <body class="text-center d-flex justify-content-center">
-    <main class="m-auto p-5">
+    <main class="m-auto p-5 scroll-enable">
         <?php 
             if (isset($_SESSION['message'])) {
             echo ('<div id="msg" class="alert alert-warning alert-dismissible fade show" role="alert">'.
@@ -59,19 +59,19 @@
             unset($_SESSION['message']);
             } 
         ?>
-    </div>
-    <div class="container ">
-        <div class="row d-flex justify-content-center">
-            <div class="col-12 col-md-10">
-                <form action="deleteproduct.php" method="POST">
-                    <label class="form-label form-control-lg px-0">Are you sure you want to delete this product?</label>
-                    <input type="hidden" name="delete_confirm" id="delete_confirm" value="0">
-                    <input type="submit" class="w-100 btn btn-lg btn-dark mt-4" value="YES" onclick="delete_confirm.value = '1';">
-                    <button class="w-100 btn btn-lg btn-dark mt-2 mb-4" onclick="location.href='products.php'; return false;">NO</button>
-                </form>
-            </div>
-        </div> 
-    </div>
+    
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-12 col-md-10">
+                    <form action="deleteproduct.php" method="POST">
+                        <label class="form-label form-control-lg px-0">Are you sure you want to delete this product?</label>
+                        <input type="hidden" name="delete_confirm" id="delete_confirm" value="0">
+                        <input type="submit" class="w-100 btn btn-lg btn-dark mt-4" value="YES" onclick="delete_confirm.value = '1';">
+                        <button class="w-100 btn btn-lg btn-dark mt-2 mb-4" onclick="location.href='products.php'; return false;">NO</button>
+                    </form>
+                </div>
+            </div> 
+        </div>
     </main>
 </body>
 

@@ -27,8 +27,8 @@
         $query = "SELECT u.user_name, sum(s.price*o.quantity) as total FROM storage AS s JOIN orders AS o ON s.storage_id = o.storage_id JOIN users AS u ON o.user_id = u.user_id GROUP BY u.user_name HAVING total > 50000";
       }
       else if($_SESSION['query']==4){
-        // Customers who have ordered atleast 2 products of same category
-        $query = "SELECT u.user_name, s.category, count(s.category) as count FROM storage AS s JOIN orders AS o ON s.storage_id = o.storage_id JOIN users AS u ON o.user_id = u.user_id GROUP BY u.user_name, s.category HAVING count > 1";
+        // Customers who have ordered atleast 2 products of different category
+        $query = "SELECT u.user_name, count(distinct s.category) as count FROM storage AS s JOIN orders AS o ON s.storage_id = o.storage_id JOIN users AS u ON o.user_id = u.user_id GROUP BY u.user_name HAVING count > 1";
       }
       else if($_SESSION['query']==5){
         // Top 5 products with highest sales
@@ -81,89 +81,107 @@
     </script>
     <title>Warehouse Management system</title>
 </head>
-<body>
+<!-- <body>
     <header>Reports</header>
     <div id="msg">
+        
+    </div> -->
+<body class="text-center d-flex justify-content-center">
+    <main class="p-5 m-auto scroll-enable">
         <?php 
-           if (isset($_SESSION['message'])) {
-            echo $_SESSION['message'];
+            if (isset($_SESSION['message'])) {
+            echo ('<div id="msg" class="alert alert-warning alert-dismissible fade show" role="alert">'.
+                    $_SESSION['message'].
+                    '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'.
+                '</div>');      
             unset($_SESSION['message']);
-            }
+            } 
         ?>
-    </div>
-    <div>
-      <div>
-        Select query to run:
-        <p>
-          <button onclick="location.href='reports.php?query=1';">Average price of all products in each category</button>
-        </p>
-        <p>
-          <button onclick="location.href='reports.php?query=2';">Number of orders for each product</button>
-        </p>
-        <p>
-          <button onclick="location.href='reports.php?query=3';">Customers who have bought more than 50,000 worth products</button>
-        </p>
-        <p>
-          <button onclick="location.href='reports.php?query=4';">Customers who have ordered atleast 2 products of same category</button>
-        </p>
-        <p>
-          <button onclick="location.href='reports.php?query=5';">Top 5 products with highest sales</button>
-        </p>
-      </div>
-      <div>
-        Select a chart to display:
-        <p>
-          <button onclick="google.charts.setOnLoadCallback(drawAreaChart(data));">Area chart</button>
-        </p>
-        <p>
-          <button onclick="google.charts.setOnLoadCallback(drawBarChart(data));">Bar chart</button>
-        </p>
-        <p>
-          <button onclick="google.charts.setOnLoadCallback(drawColumnChart(data));">Column chart</button>
-        </p>
-        <p>
-          <button onclick="google.charts.setOnLoadCallback(drawPieChart(data));">Pie chart</button>
-        </p>
-        <p>
-          <button onclick="google.charts.setOnLoadCallback(drawLineChart(data));">Line chart</button>
-        </p>
-        <p>
-          <button onclick="google.charts.setOnLoadCallback(drawScatterChart(data));">Scatter chart</button>
-        </p>
-        <p>
-          <button onclick="google.charts.setOnLoadCallback(drawHistogramChart(data));">Histogram chart</button>
-        </p>
-        <p>
-          <button onclick="google.charts.setOnLoadCallback(drawCandlestickChart(data));">Candlestick chart</button>
-        </p>
-
-      </div>
-      <div>
-          <?php
+        <div>
+        <h1 class="h3 my-3 fw-normal">Reports</h1>
+        <div>
+            <h3 class="h5 fw-normal">Select query to run</h3>
+            <div class="container px-0">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-md-4 col-lg-2 px-2 my-2">
+                        <button class="w-100 h-100 btn btn-lg btn-dark" onclick="location.href='reports.php?query=1';">Average price of all products in each category</button>
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-2 px-2 my-2">
+                        <button class="w-100 h-100 btn btn-lg btn-dark" onclick="location.href='reports.php?query=2';">Number of orders for each product</button>
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-2 px-2 my-2">
+                        <button class="w-100 h-100 btn btn-lg btn-dark" onclick="location.href='reports.php?query=3';">Customers who have bought more than 50,000 worth products</button>
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-2 px-2 my-2">
+                        <button class="w-100 h-100 btn btn-lg btn-dark" onclick="location.href='reports.php?query=4';">Customers who have ordered atleast 2 products of different category</button>
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-2 px-2 my-2">
+                        <button class="w-100 h-100 btn btn-lg btn-dark" onclick="location.href='reports.php?query=5';">Top 5 products with highest sales</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <h3 class="h5 fw-normal">Select a chart to display</h3>
+            <div class="container px-0">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-12 col-md-6 col-lg-3 px-2 my-2">
+                        <button class="w-100 h-100 btn btn-lg btn-dark" onclick="google.charts.setOnLoadCallback(drawAreaChart(data));">Area chart</button>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 px-2 my-2">
+                        <button class="w-100 h-100 btn btn-lg btn-dark" onclick="google.charts.setOnLoadCallback(drawBarChart(data));">Bar chart</button>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 px-2 my-2">
+                        <button class="w-100 h-100 btn btn-lg btn-dark" onclick="google.charts.setOnLoadCallback(drawColumnChart(data));">Column chart</button>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 px-2 my-2">
+                        <button class="w-100 h-100 btn btn-lg btn-dark" onclick="google.charts.setOnLoadCallback(drawPieChart(data));">Pie chart</button>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 px-2 my-2">
+                        <button class="w-100 h-100 btn btn-lg btn-dark" onclick="google.charts.setOnLoadCallback(drawLineChart(data));">Line chart</button>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 px-2 my-2">
+                        <button class="w-100 h-100 btn btn-lg btn-dark" onclick="google.charts.setOnLoadCallback(drawScatterChart(data));">Scatter chart</button>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 px-2 my-2">
+                        <button class="w-100 h-100 btn btn-lg btn-dark" onclick="google.charts.setOnLoadCallback(drawHistogramChart(data));">Histogram chart</button>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 px-2 my-2">
+                        <button class="w-100 h-100 btn btn-lg btn-dark" onclick="google.charts.setOnLoadCallback(drawCandlestickChart(data));">Candlestick chart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container px-0 mt-4 scroll-enable">
+            <?php
             if (isset($rows)){
-                echo '<table>
-                        <tr>
-                        <th>'. $xlabel .'</th>
-                        <th>'. $ylabel .'</th>
-                        </tr>';
+                echo '<table class="table p-2 table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr class="text-center">
+                                <th>'. $xlabel .'</th>
+                                <th>'. $ylabel .'</th>
+                            </tr>
+                        </thead><tbody class="align-middle">';
                 foreach ($rows as $row) {
                     echo "<tr>";
                     foreach ($row as $value) {
-                      echo "<td>$value</td>";
+                        echo "<td>$value</td>";
                     }
                     echo "</tr>";
                 }
-                echo "</table>";
+                echo "</tody></table>";
             }  
-          ?>
+            ?>
         
-      </div>
-      <div>
-        <div id="chart_div" style="width: 100%; height: 500px;"></div>
-      </div>
-    </div>
-    <div>
-        <button onclick="location.href='dashboard.php'; return false;">Back to Home</button>
-    </div> 
+        </div>
+        <div>
+            <div id="chart_div" style="width: 100%; height: 500px;"></div>
+        </div>
+        </div>
+        <div class="pt-5">
+            <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='dashboard.php'; return false;">Back to Home</button>
+        </div> 
+    </main>
 </body>
 </html>

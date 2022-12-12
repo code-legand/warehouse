@@ -38,7 +38,6 @@
             } 
         ?>
 
-
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-12 col-md-10">
@@ -53,7 +52,9 @@
                     <button class="w-100 btn btn-lg btn-dark mt-4" onclick="location.href='reports.php';">Reports</button>
                     <button class="w-100 btn btn-lg btn-dark mt-4" onclick="location.href='logout.php';">Logout</button>
                     </div>
+                </div>
             </div>
+        </div>
     </main>
 </body>
 <!-- <body>

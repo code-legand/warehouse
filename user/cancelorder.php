@@ -30,8 +30,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -59,19 +60,22 @@
             unset($_SESSION['message']);
             } 
         ?>
-    </div>
-    <div class="container ">
+        <div class="container ">
             <div class="row d-flex justify-content-center">
                 <div class="col-12 col-md-10">
                     <form action="cancelorder.php" method="post">
-                    <label class="form-label form-control-lg px-0">Are you sure you want to cancel this order?</label>
-                    <input type="hidden" name="cancel_confirm" id="cancel_confirm" value="0">
-            <input type="submit" class="w-100 btn btn-lg btn-dark mt-4" value="Yes" onclick="cancel_confirm.value = '1'">
-            <button class="w-100 btn btn-lg btn-dark mt-2 mb-4" onclick="location.href='myorders.php'; return false;">No</button> 
-        </form>
-    </div> 
-</div>
-</div>
+                        <label class="form-label form-control-lg px-0">Are you sure you want to cancel this
+                            order?</label>
+                        <input type="hidden" name="cancel_confirm" id="cancel_confirm" value="0">
+                        <input type="submit" class="w-100 btn btn-lg btn-dark mt-4" value="Yes"
+                            onclick="cancel_confirm.value = '1'">
+                        <button class="w-100 btn btn-lg btn-dark mt-2 mb-4"
+                            onclick="location.href='myorders.php'; return false;">No</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </main>
 </body>
+
 </html>

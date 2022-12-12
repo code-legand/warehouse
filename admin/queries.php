@@ -56,7 +56,7 @@
 </head>
 
 <body class="text-center d-flex justify-content-center">
-<main class="p-5 m-auto">
+<main class="p-5 m-auto scroll-enable">
     <?php 
         if (isset($_SESSION['message'])) {
         echo ('<div id="msg" class="alert alert-warning alert-dismissible fade show" role="alert">'.
@@ -68,6 +68,8 @@
     ?>
     <div>
         <h1 class="h3 my-3 fw-normal">Query Manager</h1>
+    </div>
+    <div>
         <div class="container px-0">
             <button class="w-100 btn btn-lg btn-dark mt-2 mb-4" id="log-trigger" onclick="resize();">Show Log</button>
             <!-- <div id="log-tab" style="display: none;"> -->
@@ -108,7 +110,7 @@
                                     Query executed successfully
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>';
-                            echo '<table class="table p-2">';
+                            echo '<table class="table p-2 table-striped table-hover">';
                             echo '<thead class="table-dark"><tr>';
                             for($i = 0; $i < $num_columns; $i++){
                                 echo '<th>'.$columns[$i].'</th>';

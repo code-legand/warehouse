@@ -59,19 +59,19 @@
             unset($_SESSION['message']);
             } 
         ?>
-    </div>
-    <div class="container ">
-        <div class="row d-flex justify-content-center">
-            <div class="col-12 col-md-10">
-                <form action="deleteuser.php" method="POST">
-                    <label class="form-label form-control-lg px-0">Are you sure you want to delete this user?</label>
-                    <input type="hidden" name="delete_confirm" id="delete_confirm" value="0">
-                    <input class="w-100 btn btn-lg btn-dark mt-4" type="submit" value="YES" onclick="delete_confirm.value = '1';">
-                    <button class="w-100 btn btn-lg btn-dark mt-2 mb-4" onclick="location.href='users.php'; return false;">NO</button>
-                </form>
-            </div>
-        </div> 
-    </div>
+        </div>
+        <div class="container ">
+            <div class="row d-flex justify-content-center">
+                <div class="col-12 col-md-10">
+                    <form action="deleteuser.php" method="POST">
+                        <label class="form-label form-control-lg px-0">Are you sure you want to delete this user?</label>
+                        <input type="hidden" name="delete_confirm" id="delete_confirm" value="0">
+                        <input class="w-100 btn btn-lg btn-dark mt-4" type="submit" value="YES" onclick="delete_confirm.value = '1';">
+                        <button class="w-100 btn btn-lg btn-dark mt-2 mb-4" onclick="location.href='users.php'; return false;">NO</button>
+                    </form>
+                </div>
+            </div> 
+        </div>
     </main>
 </body>
 <!-- <body>

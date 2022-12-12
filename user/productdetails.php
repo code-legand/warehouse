@@ -48,19 +48,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
+    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
     <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
     <link rel="manifest" href="/warehouse/img/site.webmanifest">
-    <script src="#"></script>
+    <script src="/warehouse/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
     <title>Warehouse Management system</title>
 </head>
-<body>
+
+<body class="text-center d-flex justify-content-center">
+    <main class="p-5 m-auto scroll-enable">
+        <?php 
+            if (isset($_SESSION['message'])) {
+            echo ('<div id="msg" class="alert alert-warning alert-dismissible fade show" role="alert">'.
+                    $_SESSION['message'].
+                    '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'.
+                '</div>');      
+            unset($_SESSION['message']);
+            } 
+        ?>
+
+        <div>
+            <h1 class="h3 my-3 fw-normal">Product Details</h1>
+        </div>
+
+        <div class="container scroll-enable">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="<?= $product_image ?>" alt="<?= $product_name ?>" class="img-fluid">
+                </div>
+                <div class="col-md-6">
+                    <table class="table table-striped table-hover">
+                        <tr>
+                            <th class="table-dark">
+                                Product Name
+                            </th>
+                            <td>
+                                <?= $product_name ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="table-dark">
+                                Category
+                            </th>
+                            <td>
+                                <?= $category ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="table-dark">
+                                Price
+                            </th>
+                            <td>
+                                <?= $price ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="table-dark">
+                                Quantity
+                            </th>
+                            <td>
+                                <?= $quantity ?>
+                            </td>
+                        </tr>
+                        <?php
+                            foreach ($p_details as $key => $value) {
+                                echo '<tr><th class="table-dark">'.$key.'</th><td>'.$value.'</td></tr>';
+                            }
+                        ?>
+                        <tr>
+                            <th class="table-dark">
+                                Product Description
+                            </th>
+                            <td>
+                                <?= $product_desc ?>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="pt-5">
+            <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='dashboard.php'; return false;">Dashboard</button>
+        </div> 
+    </main>
+</body>
+
+</html>
+<!-- <body>
     <header>Product details</header>
     <div id="msg">
         <?php 
@@ -138,5 +221,5 @@
     <div>
         <button onclick="location.href='dashboard.php'; return false;">Dashboard</button>
     </div> 
-</body>
+</body> -->
 </html>

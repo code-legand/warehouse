@@ -59,8 +59,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -89,59 +90,60 @@
             } 
         ?>
 
-<div class="container ">
+        <div class="container ">
             <div class="row d-flex justify-content-center">
                 <div class="col-12 col-md-10">
                     <form action="updateprofile.php" method="post">
-                        
                         <h1 class="h3 mb-3 fw-normal">Update Profile</h1>
-            <div class="form-floating">
-                <input type="text" class="form-control" name="username" id="uname" required value="<?= $user_name ?>" autofocus>
-                <label for="uname">User Name: </label>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" name="username" id="uname" required
+                                value="<?= $user_name ?>" autofocus>
+                            <label for="uname">User Name: </label>
+                        </div>
+                        <div class="form-floating mt-2">
+                            <input type="email" class="form-control" name="email" id="mail" required
+                                value="<?= $email ?>">
+                            <label for="mail">Email: </label>
+                        </div>
+                        <div class="form-floating mt-2">
+                            <input type="tel" class="form-control" name="phone" id="phone" required
+                                value="<?= $phone ?>">
+                            <label for="phone">Phone: </label>
+                        </div>
+                        <div class="form-floating mt-2">
+                            <input type="text" class="form-control" name="street" id="street" required
+                                value="<?= $street ?>">
+                            <label for="street">Street: </label>
+                        </div>
+                        <div class="form-floating mt-2">
+                            <input type="text" class="form-control" name="city" id="city" required value="<?= $city ?>">
+                            <label for="city">City: </label>
+                        </div>
+                        <div class="form-floating mt-2">
+                            <input type="text" class="form-control" name="state" id="state" required
+                                value="<?= $state ?>">
+                            <label for="state">State: </label>
+                        </div>
+                        <div class="form-floating mt-2">
+                            <input type="number" class="form-control" name="zipcode" id="zip" min="100000" max="999999"
+                                required value="<?= $zip_code ?>">
+                            <label for="zip">Zip Code: </label>
+                        </div>
 
+                        <input type="hidden" name="update_confirm" id="update_confirm" value="0">
+                        <input type="submit" class="w-100 btn btn-lg btn-dark mt-4" name="update" value="Update"
+                            onclick="update_confirm.value='1';">
+                        <button class="w-100 btn btn-lg btn-dark mt-2 mb-4"
+                            onclick="location.href='updateprofile.php'; return false">Reset</button>
+                    </form>
+                </div>
             </div>
-            <div class="form-floating mt-2">
-                <input type="email" class="form-control" name="email" id="mail" required value="<?= $email ?>">
-                <label for="mail">Email: </label>
-
-            </div>
-            <div class="form-floating mt-2">
-                <input type="tel" class="form-control" name="phone" id="phone" required value="<?= $phone ?>">
-                <label for="phone">Phone: </label>
-
-            </div>
-            <div class="form-floating mt-2">
-                <input type="text" class="form-control" name="street" id="street" required value="<?= $street ?>">
-                <label for="street">Street: </label>
-
-            </div>
-            <div class="form-floating mt-2">
-                <input type="text" class="form-control" name="city" id="city" required value="<?= $city ?>">
-                <label for="city">City: </label>
-
-            </div>
-            <div class="form-floating mt-2">
-                <input type="text" class="form-control" name="state" id="state" required value="<?= $state ?>">
-                <label for="state">State: </label>
-
-            </div>
-            <div class="form-floating mt-2">
-                <input type="number" class="form-control" name="zipcode" id="zip" min="100000" max="999999" required value="<?= $zip_code ?>">
-                <label for="zip">Zip Code: </label>
-
-            </div>
-            
-                <input type="hidden" name="update_confirm" id="update_confirm" value="0">
-                <input type="submit" class="w-100 btn btn-lg btn-dark mt-4" name="update" value="Update" onclick="update_confirm.value='1';">
-                <button class="w-100 btn btn-lg btn-dark mt-2 mb-4" onclick="location.href='updateprofile.php'; return false">Reset</button>
-            
-        </form>
         </div>
+        <div class="pt-5">
+            <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4"
+                onclick="location.href='dashboard.php'; return false;">Dashboard</button>
         </div>
-    </div>
-    <div  class="pt-5">
-        <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='dashboard.php'; return false;">Dashboard</button>
-    </div>
     </main>
 </body>
+
 </html>

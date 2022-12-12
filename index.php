@@ -49,7 +49,7 @@
                     <h1 class="h3 mb-3 fw-normal">Welcome</h1>
                     <button class="w-100 btn btn-lg btn-dark" onclick="location.href='user/login.php';">Log In</button>
                     <button class="w-100 btn btn-lg btn-dark mt-4" onclick="location.href='user/signup.php';">Register</button>
-                    </div>
+                </div>
             </div>
     </main>
 </body>

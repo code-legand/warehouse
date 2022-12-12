@@ -58,7 +58,7 @@
         ?>
 
 
-        <div class="container ">
+        <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-12 col-md-10">
                     <form action="login.php" method="post">
@@ -81,8 +81,6 @@
                             onclick="location.href='login.php'; return false">Cancel</button>
                         <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p> -->
                     </form>
-
-
                 </div>
             </div>
         </div>

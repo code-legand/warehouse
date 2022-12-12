@@ -10,9 +10,9 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
 
-  <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -28,9 +28,9 @@
     <script src="scripts.js"></script>
 
     <title>Warehouse Management system</title>
-  </head>
+</head>
 
-  <body class="text-center d-flex justify-content-center">
+<body class="text-center d-flex justify-content-center">
     <main class="m-auto p-5">
         <?php 
             if (isset($_SESSION['message'])) {
@@ -50,15 +50,19 @@
                         height="57">
                     <h1 class="h3 mb-3 fw-normal">Dashboard</h1>
                     <button class="w-100 btn btn-lg btn-dark" onclick="location.href='products.php';">Products</button>
-                    <button class="w-100 btn btn-lg btn-dark mt-4" onclick="location.href='myorders.php';">Orders</button>
-                    <button class="w-100 btn btn-lg btn-dark mt-4" onclick="location.href='profile.php';">Profile</button>
-                    <button class="w-100 btn btn-lg btn-dark mt-4" onclick="location.href='changepassword.php';">Change Password</button>
+                    <button class="w-100 btn btn-lg btn-dark mt-4"
+                        onclick="location.href='myorders.php';">Orders</button>
+                    <button class="w-100 btn btn-lg btn-dark mt-4"
+                        onclick="location.href='profile.php';">Profile</button>
+                    <button class="w-100 btn btn-lg btn-dark mt-4" onclick="location.href='changepassword.php';">Change
+                        Password</button>
                     <button class="w-100 btn btn-lg btn-dark mt-4" onclick="location.href='logout.php';">Logout</button>
-                    </div>
+                </div>
             </div>
+        </div>
     </main>
 </body>
-  <!-- <body >
+<!-- <body >
     
     <header>Dashboard</header>
     
@@ -82,4 +86,5 @@
     
 
   </body> -->
+
 </html>

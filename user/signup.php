@@ -105,8 +105,6 @@
                             onclick="location.href='signup.php'; return false;">Cancel</button>
                         <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p> -->
                     </form>
-
-
                 </div>
             </div>
         </div>

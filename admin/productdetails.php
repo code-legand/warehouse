@@ -52,8 +52,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
@@ -70,7 +71,7 @@
 </head>
 
 <body class="text-center d-flex justify-content-center">
-<main class="px-0 m-auto">
+    <main class="p-5 m-auto scroll-enable">
         <?php 
             if (isset($_SESSION['message'])) {
             echo ('<div id="msg" class="alert alert-warning alert-dismissible fade show" role="alert">'.
@@ -81,11 +82,15 @@
             } 
         ?>
 
-    <div class="container px-0">
-    <h1 class="h3 my-3 fw-normal">Order Details</h1>
-            <table class="table p-2">
-            <tbody class="align-middle">    <!--align vertically center-->
-<!-- <body>
+        <div>
+            <h1 class="h3 my-3 fw-normal">Product Details</h1>
+        </div>
+
+        <div class="container px-0 scroll-enable"> 
+            <table class="table p-2 table-striped table-hover">
+                <tbody class="align-middle">
+                    <!--align vertically center-->
+                    <!-- <body>
     <header>Product Details</header>
     <div id="msg">
         
@@ -93,113 +98,115 @@
     <div>
         <table> -->
 
-            <tr>
-                <th class="table-dark">
-                    Storage Id
-                </th>
-                <td>
-                    <?= $storage_id ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    Admin Id
-                </th>
-                <td>
-                    <?= $admin_id ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    Product Name
-                </th>
-                <td>
-                    <?= $product_name ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    Product Category
-                </th>
-                <td>
-                    <?= $category ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    Product Price
-                </th>
-                <td>
-                    <?= $price ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    Product Quantity
-                </th>
-                <td>
-                    <?= $quantity ?>
-                </td>
-            </tr>
-            <?php
-                foreach ($p_details as $key => $value) {
-                    echo '<tr><th class="table-dark">'.$key.'</th><td>'.$value.'</td></tr>';
-                }
-            ?>
-            <tr>
-                <th class="table-dark">
-                    Product Image
-                </th>
-                <td>
-                    <img src="<?= $product_image ?>" alt="<?= $product_name ?>" class="productdetails_image">
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    Product Description
-                </th>
-                <td>
-                    <?= $product_desc ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    Action
-                </th>
-                <td>
-                    <?= $action ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    Action Date
-                </th>
-                <td>
-                    <?= $action_date ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    Block number
-                </th>
-                <td>
-                    <?= $block_no ?>
-                </td>
-            </tr>
-            <tr>
-                <th class="table-dark">
-                    Row number
-                </th>
-                <td>
-                    <?= $row_no ?>
-                </td>
-            </tr>
-        </tbody>
-        </table>
-    </div>
-    <div class="pt-5">
-        <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='products.php'; return false;">Back</button>
-    </div>
-</main>
+                    <tr>
+                        <th class="table-dark">
+                            Storage Id
+                        </th>
+                        <td>
+                            <?= $storage_id ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table-dark">
+                            Admin Id
+                        </th>
+                        <td>
+                            <?= $admin_id ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table-dark">
+                            Product Name
+                        </th>
+                        <td>
+                            <?= $product_name ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table-dark">
+                            Product Category
+                        </th>
+                        <td>
+                            <?= $category ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table-dark">
+                            Product Price
+                        </th>
+                        <td>
+                            <?= $price ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table-dark">
+                            Product Quantity
+                        </th>
+                        <td>
+                            <?= $quantity ?>
+                        </td>
+                    </tr>
+                    <?php
+                        foreach ($p_details as $key => $value) {
+                            echo '<tr><th class="table-dark">'.$key.'</th><td>'.$value.'</td></tr>';
+                        }
+                    ?>
+                    <tr>
+                        <th class="table-dark">
+                            Product Image
+                        </th>
+                        <td>
+                            <img src="<?= $product_image ?>" alt="<?= $product_name ?>" class="productdetails_image">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table-dark">
+                            Product Description
+                        </th>
+                        <td>
+                            <?= $product_desc ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table-dark">
+                            Action
+                        </th>
+                        <td>
+                            <?= $action ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table-dark">
+                            Action Date
+                        </th>
+                        <td>
+                            <?= $action_date ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table-dark">
+                            Block number
+                        </th>
+                        <td>
+                            <?= $block_no ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="table-dark">
+                            Row number
+                        </th>
+                        <td>
+                            <?= $row_no ?>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pt-5">
+            <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4"
+                onclick="location.href='products.php'; return false;">Back</button>
+        </div>
+    </main>
 </body>
+
 </html>
