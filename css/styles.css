@@ -1,4 +1,4 @@
-body{
+body {
     background-image: url("/warehouse/img/bg-01.jpg");
     background-color: rgb(33, 37, 41);
     background-repeat: no-repeat;
@@ -13,41 +13,92 @@ table {
     width: 100%;
     border: 0px !important;
 }
-table, caption, th, td {
-    /* background-color: rgb(220, 220, 220); */
+
+table,
+caption,
+th,
+td {
     border: 3px solid black;
     border-collapse: separate;
 }
-th, td {
+
+th,
+td {
     border-radius: 2vw 1vw 2vw 1vw;
 }
+
 td {
     background-color: white !important;
 }
 
-
-
-.productdetails_image{
+.productdetails_image {
     max-width: 25%;
     max-height: 25%;
 }
 
-.updateproduct_image{
+.updateproduct_image {
     max-width: 20%;
     max-height: 20%;
 }
 
-.updateproduct_figure{
+.updateproduct_figure {
     border: 2px solid black;
     border-radius: 5px;
 }
 
-/* #log-tab{
-    display: none;
-    border: 1px solid black;
-    height: 50%;
-} */
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
 
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
 
+html,
+body {
+    height: 100%;
+}
 
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
 
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+}
+
+main {
+    background-color: #f5f5f5 !important;
+    opacity: 0.95;
+    box-shadow: 0 0 100vw rgba(255, 255, 255, 1.0);
+
+}
+
+.scroll-enable {
+    overflow: auto;
+}
+
+.scroll-disable {
+    overflow: hidden;
+}

@@ -20,8 +20,6 @@
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
-    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
-    <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
@@ -30,17 +28,6 @@
     <script src="scripts.js"></script>
     <title>Warehouse Management system</title>
 </head>
-<!-- <body>
-    <header>User Management</header>
-    <div id="msg">
-        
-    </div>
-    <div>
-        <div>
-            <button onclick="location.href='adduser.php';">Add User</button>
-        </div>
-        <table>
-            <tr> -->
 
 <body class="text-center d-flex justify-content-center">
     <main class="p-5 m-auto scroll-enable">

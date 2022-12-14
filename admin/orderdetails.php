@@ -29,8 +29,6 @@
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
-    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
-    <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
@@ -39,13 +37,6 @@
     <script src="scripts.js"></script>
     <title>Warehouse Management system</title>
 </head>
-<!-- <body>
-    <header>Order Details</header>
-    <div id="msg">
-        
-    </div>
-    <div>
-        <table> -->
 
 <body class="text-center d-flex justify-content-center">
     <main class="p-5 m-auto scroll-enable">
@@ -65,7 +56,7 @@
 
         <div class="container px-0 scroll-enable">        
             <table class="table p-2 table-striped table-hover">
-                <tbody class="align-middle">    <!--align vertically center-->
+                <tbody class="align-middle">
                     <tr>
                         <th class="table-dark">
                             User ID

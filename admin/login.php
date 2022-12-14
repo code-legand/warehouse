@@ -33,8 +33,6 @@
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
-    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
-    <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
@@ -45,7 +43,6 @@
 </head>
 
 <body class="text-center d-flex justify-content-center">
-    <!-- <header>Log In</header> -->
     <main class="m-auto p-5">
         <?php 
             if (isset($_SESSION['message'])) {
@@ -79,7 +76,6 @@
                         <input class="w-100 btn btn-lg btn-dark mt-4" type="submit" name="login" value="Log in">
                         <button class="w-100 btn btn-lg btn-dark mt-2"
                             onclick="location.href='login.php'; return false">Cancel</button>
-                        <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p> -->
                     </form>
                 </div>
             </div>
@@ -87,26 +83,3 @@
     </main>
 </body>
 </html>
-<!-- <body>
-    <header>Admin Log In</header>
-    <div id="msg">
-        
-    </div>
-    <div>
-        <form action="login.php" method="post">
-            <p>
-                <label for="aname">Admin Name: </label>
-                <input type="text" name="adminname" id="aname">
-            </p>
-            <p>
-                <label for="pass">Password: </label>
-                <input type="password" name="passwd" id="pass">
-            </p>
-            <p>
-                <input type="submit" name="login" value="Log In">
-                <button onclick="location.href='login.php'; return false">Cancel</button>
-            </p>
-        </form>
-    </div>  
-</body>
-</html> -->

@@ -15,8 +15,6 @@
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
-    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
-    <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
@@ -57,34 +55,4 @@
         </div>
     </main>
 </body>
-<!-- <body>
-    <header>Dashboard</header>
-    <div id="msg">
-        
-    </div>
-    <div>
-        <div>
-            <a href="changepassword.php">Change Password</a>
-        </div>
-        <div>
-            <a href="orders.php">Order Management</a>
-        </div>
-        <div>
-            <a href="products.php">Product Management</a>
-        </div>
-        <div>
-            <a href="users.php">User Management</a>
-        </div>
-        <div>
-            <a href="queries.php">Query Manager</a>
-        </div>
-        <div>
-            <a href="reports.php">Reports</a>
-        </div>
-        <div>
-            <a href="logout.php">Log Out</a>
-        </div> 
-    </div>    
-
-</body> -->
 </html>

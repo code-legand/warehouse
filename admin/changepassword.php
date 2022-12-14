@@ -48,8 +48,6 @@
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
-    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
-    <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
@@ -100,40 +98,9 @@
             </div>
         </div>
         <div class="pt-5">
-            <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='dashboard.php'; return false;">Dashboard</button>    <!--************marks**************  -->
+            <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='dashboard.php'; return false;">Dashboard</button>
         </div>
     </main>
 
 </body>
-
-<!-- <body>
-    <header>Change Password</header>
-    <div id="msg">
-        
-    </div>
-    <div>
-        <form action="changepassword.php" method="POST">
-            <p>
-                <label for="c_pass">Enter Current Password: </label>
-                <input type="password" name="current_pass" id="c_pass" required>
-            </p>
-            <p>
-                <label for="n_pass">Enter New Password: </label>
-                <input type="password" name="new_pass" id="n_pass" required>
-            </p>
-            <p>
-                <label for="re_n_pass">Re-enter New Password: </label>
-                <input type="password" name="re_new_pass" id="re_n_pass" required>
-            </p>
-            <p>
-                <input type="submit" value="Change Password">
-                <button onclick="location.href='changepassword.php'; return false;">Clear</button>
-            </p>
-        </form>
-    </div>
-    <div>
-        <button onclick="location.href='dashboard.php'; return false;">Back to Home</button>
-    </div>  
-
-</body> -->
 </html>

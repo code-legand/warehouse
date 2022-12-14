@@ -40,8 +40,6 @@
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
-    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
-    <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
@@ -67,18 +65,8 @@
         <div class="container ">
             <div class="row d-flex justify-content-center">
                 <div class="col-12 col-md-10">
-                    <form action="signup.php" method="post">
-                        <!-- <img class="mb-4" src="/warehouse/img/android-chrome-512x512.png" alt="logo-image" width="72"
-                            height="57"> -->
+                    <form action="adduser.php" method="post">
                         <h1 class="h3 mb-3 fw-normal">Add User</h1>
-
-<!-- <body>
-    <div>
-       
-    </div>
-    <header>Add User</header>  
-    <div>
-        <form action="adduser.php" method="post"> -->
                         <div class="form-floating">
                             <input type="text" class="form-control mt-2" name="username" id="uname" placeholder="User Name" required>
                             <label for="uname">User Name</label>

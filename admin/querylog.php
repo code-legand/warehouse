@@ -19,5 +19,6 @@
         $file = fopen("querylog.json", "w") or die("Unable to open file!");
         fwrite($file, $logs.PHP_EOL);
         fclose($file);
+        return json_decode($logs, true);
     }
 ?>

@@ -59,8 +59,6 @@
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
-    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
-    <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
@@ -89,15 +87,6 @@
         <div class="container px-0 scroll-enable"> 
             <table class="table p-2 table-striped table-hover">
                 <tbody class="align-middle">
-                    <!--align vertically center-->
-                    <!-- <body>
-    <header>Product Details</header>
-    <div id="msg">
-        
-    </div>
-    <div>
-        <table> -->
-
                     <tr>
                         <th class="table-dark">
                             Storage Id

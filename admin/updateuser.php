@@ -91,8 +91,6 @@
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
-    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
-    <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
@@ -119,8 +117,6 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-12 col-md-10">
                     <form action="updateuser.php" method="post">
-                        <!-- <img class="mb-4" src="/warehouse/img/android-chrome-512x512.png" alt="logo-image" width="72"
-                            height="57"> -->
                         <h1 class="h3 mb-3 fw-normal">Edit User Information</h1>
                         <div class="form-floating">
                             <input type="text" class="form-control mt-2" name="username" id="uname" placeholder="User Name" required value="<?= $user_name ?>">
@@ -167,55 +163,4 @@
         </div>
     </main>
 </body>
-
-<!-- <body>
-    <div>
-       
-    </div>
-    <header>Edit User Information</header>  
-    <div>
-        <form action="updateuser.php" method="post">
-            <p>
-                <label for="uname">User Name: </label>
-                <input type="text" name="username" id="uname" required value="<?= $user_name ?>">
-            </p>
-            <p>
-                <label for="pass">Password: </label>
-                <input type="password" name="passwd" id="pass" required value="<?= $password ?>">
-            </p>
-            <p>
-                <label for="mail">Email: </label>
-                <input type="email" name="email" id="mail" required value="<?= $email ?>">
-            </p>
-            <p>
-                <label for="phone">Phone: </label>
-                <input type="tel" name="phone" id="phone" required value="<?= $phone ?>">
-            </p>
-            <p>
-                <label for="street">Street: </label>
-                <input type="text" name="street" id="street" required value="<?= $street ?>">
-            </p>
-            <p>
-                <label for="city">City: </label>
-                <input type="text" name="city" id="city" required value="<?= $city ?>">
-            </p>
-            <p>
-                <label for="state">State: </label>
-                <input type="text" name="state" id="state" required value="<?= $state ?>">
-            </p>
-            <p>
-                <label for="zip">Zip Code: </label>
-                <input type="number" name="zipcode" id="zip" min="100000" max="999999" required value="<?= $zip_code ?>">
-            </p>
-            <p>
-                <input type="hidden" name="update_confirm" id="update_confirm" value="0">
-                <input type="submit" name="update" value="Update" onclick="update_confirm.value='1';">
-                <button onclick="location.href='updateuser.php'; return false">Reset</button>
-            </p>
-        </form>
-    </div>
-    <div>
-        <button onclick="location.href='users.php'; return false">Back</button>
-    </div>  
-</body> -->
 </html>

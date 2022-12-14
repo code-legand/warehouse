@@ -34,8 +34,6 @@
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
-    <link rel="stylesheet" href="/warehouse/css/usersignup.css">
-    <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
@@ -46,7 +44,6 @@
 </head>
 
 <body class="text-center d-flex justify-content-center">
-    <!-- <header>Log In</header> -->
     <main class="m-auto p-5">
         <?php 
             if (isset($_SESSION['message'])) {
@@ -103,57 +100,10 @@
                         <input class="w-100 btn btn-lg btn-dark mt-4" type="submit" name="signup" value="Sign Up">
                         <button class="w-100 btn btn-lg btn-dark mt-2"
                             onclick="location.href='signup.php'; return false;">Cancel</button>
-                        <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p> -->
                     </form>
                 </div>
             </div>
         </div>
     </main>
-    <!-- <body> -->
-    <!-- <div>
-       
-    </div>
-    <header>Sign Up</header>  
-    <div>
-        <form action="signup.php" method="post">
-            <p>
-                <label for="uname">User Name: </label>
-                <input type="text" name="username" id="uname" required>
-            </p>
-            <p>
-                <label for="pass">Password: </label>
-                <input type="password" name="passwd" id="pass" required>
-            </p>
-            <p>
-                <label for="mail">Email: </label>
-                <input type="email" name="email" id="mail" required>
-            </p>
-            <p>
-                <label for="phone">Phone: </label>
-                <input type="tel" name="phone" id="phone" required>
-            </p>
-            <p>
-                <label for="street">Street: </label>
-                <input type="text" name="street" id="street" required>
-            </p>
-            <p>
-                <label for="city">City: </label>
-                <input type="text" name="city" id="city" required>
-            </p>
-            <p>
-                <label for="state">State: </label>
-                <input type="text" name="state" id="state" required>
-            </p>
-            <p>
-                <label for="zip">Zip Code: </label>
-                <input type="number" name="zipcode" id="zip" min="100000" max="999999" required>
-            </p>
-            <p>
-                <input type="submit" name="signup" value="Sign Up">
-                <button onclick="location.href='signup.php'; return false">Cancel</button>
-            </p>
-        </form>
-    </div>   -->
 </body>
-
 </html>

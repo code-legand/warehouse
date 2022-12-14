@@ -25,7 +25,7 @@
             $rows = array_values($result);
             $num_rows = count($rows);
             $num_columns = count($columns);
-            storequery($_SESSION['query']);
+            $logs = storequery($_SESSION['query']);
         } 
         catch (\Throwable $th) {
             // $error = $th->getMessage();          //removed for security reasons
@@ -33,7 +33,7 @@
         }
     }
 
-    $logs = printquery();
+    $logs = $logs ?? printquery();
 ?>
 
 <!DOCTYPE html>
@@ -44,8 +44,6 @@
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
-    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
-    <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
@@ -72,7 +70,6 @@
     <div>
         <div class="container px-0">
             <button class="w-100 btn btn-lg btn-dark mt-2 mb-4" id="log-trigger" onclick="resize();">Show Log</button>
-            <!-- <div id="log-tab" style="display: none;"> -->
             <div class="form-floating" id="log-tab" style="display: none;">
                 <textarea class="form-control" cols="100" style="height: 200px" readonly
                 ><?php 

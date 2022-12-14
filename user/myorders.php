@@ -23,15 +23,12 @@
 <html lang="en">
 
 <head>
-    <!-- ************marks start**************  -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
-    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
-    <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
@@ -58,7 +55,6 @@
             <table class="table p-2 table-striped table-hover">
                 <thead class="table-dark">
                     <tr class="text-center">
-                        <!-- ************marks end**************  -->
 
                         <th>Product Name</th>
                         <th>Quantity</th>
@@ -69,8 +65,6 @@
                     </tr>
                 </thead>
                 <tbody class="align-middle">
-                    <!--align vertically center-->
-
                     <?php
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         echo "<tr><td>";
@@ -87,13 +81,13 @@
                         echo('<form action="productdetails.php" method="get">
                                 <input type="hidden" name="storage_id" value="'.$row['storage_id'].'">
                                 <input type="submit" value="View" class="w-100 btn btn-lg btn-dark">        
-                            </form>');          //************marks**************  -->
+                            </form>');
                         echo "</td><td>";
                         if($row['status'] == 'P') {
                             echo('<form action="cancelorder.php" method="POST">
                                     <input type="hidden" name="order_id" value="'.$row['order_id'].'">
                                     <input type="submit" value="Cancel" class="w-100 btn btn-lg btn-dark">
-                                </form>');         //************marks**************  -->
+                                </form>');
                         }
                         else{
                             echo($status_map[$row['status']]);
@@ -107,7 +101,6 @@
         <div class="pt-5">
             <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4"
                 onclick="location.href='dashboard.php'; return false;">Dashboard</button>
-            <!--************marks**************  -->
         </div>
     </main>
 </body>

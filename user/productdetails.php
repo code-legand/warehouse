@@ -53,8 +53,6 @@
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
-    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
-    <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
@@ -141,85 +139,4 @@
         </div> 
     </main>
 </body>
-
-</html>
-<!-- <body>
-    <header>Product details</header>
-    <div id="msg">
-        <?php 
-           if (isset($_SESSION['message'])) {
-            echo $_SESSION['message'];
-            unset($_SESSION['message']);
-            } 
-        ?>
-    </div>
-    <div>
-        <table>
-            <caption><?= $storage_id ?></caption>
-            <tr>
-                <td>
-                    Product Image
-                </td>
-                <td>
-                    <img src="<?= $product_image ?>" alt="<?= $product_name ?>">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Product Name
-                </td>
-                <td>
-                    <?= $product_name ?>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Category
-                </td>
-                <td>
-                    <?= $category ?>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Price
-                </td>
-                <td>
-                    <?= $price ?>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Quantity
-                </td>
-                <td>
-                    <?= $quantity ?>
-                </td>
-            </tr>
-            <?php
-                foreach ($p_details as $key => $value) {
-                    echo '<tr><td>'.$key.'</td><td>'.$value.'</td></tr>';
-                }
-            ?>
-            <tr>
-                <td>
-                    Product Description
-                </td>
-                <td>
-                    <?= $product_desc ?>
-                </td>
-            </tr>
-
-        </table>
-    </div>
-    <div>
-        <form action="placeorder.php" method="post">
-            <input type="hidden" name="storage_id" value="<?= $storage_id ?>">
-            <input type="submit" value="Order">
-        </form>
-    </div>
-    <div>
-        <button onclick="location.href='dashboard.php'; return false;">Dashboard</button>
-    </div> 
-</body> -->
 </html>

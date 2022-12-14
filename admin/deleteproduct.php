@@ -37,8 +37,6 @@
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
-    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
-    <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
@@ -74,20 +72,4 @@
         </div>
     </main>
 </body>
-
-<!-- <body>
-    <header>Delete Product</header>
-    <div id="msg">
-        
-    </div>
-    <div>
-        Are you sure you want to delete this product?
-        <form action="deleteproduct.php" method="POST">
-            <input type="hidden" name="delete_confirm" id="delete_confirm" value="0">
-            <input type="submit" value="YES" onclick="delete_confirm.value = '1';">
-            <button onclick="location.href='products.php'; return false;">NO</button>
-        </form>
-    </div>    
-
-</body> -->
 </html>

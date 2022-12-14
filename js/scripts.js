@@ -1,15 +1,9 @@
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#product_image')
-                .attr('src', e.target.result);
-        };
-
-        reader.readAsDataURL(input.files[0]);
+p_image.onchange = evt => {
+    const [file] = p_image.files
+    if (file) {
+      product_image.src = URL.createObjectURL(file)
     }
-}
+  }
 
 function resize(){
     if(document.getElementById("log-tab").style.display == "none"){

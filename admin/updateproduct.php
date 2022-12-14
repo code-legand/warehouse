@@ -193,14 +193,11 @@
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
-    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
-    <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
     <link rel="manifest" href="/warehouse/img/site.webmanifest">
     <script src="/warehouse/js/bootstrap.min.js"></script>
-    <script src="scripts.js"></script>
     <title>Warehouse Management system</title>
 </head>
 
@@ -253,7 +250,6 @@
                                 <div class="mt-4">Product Details</div>
                                 <div>
                                     <div class="container px-0">
-                                        <!-- <label for="attr1">1.</label> -->
                                         <div class="row g-0 mt-2">
                                             <div class="col form-floating">
                                                 <input type="text" class="form-control" name="desc_attr1"
@@ -268,7 +264,6 @@
                                         </div>
                                     </div>
                                     <div class="container px-0">
-                                        <!-- <label for="attr2">2.</label> -->
                                         <div class="row g-0 mt-2">
                                             <div class="col form-floating">
                                                 <input type="text" class="form-control" name="desc_attr2"
@@ -283,7 +278,6 @@
                                         </div>
                                     </div>
                                     <div class="container px-0">
-                                        <!-- <label for="attr2">2.</label> -->
                                         <div class="row g-0 mt-2">
                                             <div class="col form-floating">
                                                 <input type="text" class="form-control" name="desc_attr3"
@@ -298,7 +292,6 @@
                                         </div>
                                     </div>
                                     <div class="container px-0">
-                                        <!-- <label for="attr2">2.</label> -->
                                         <div class="row g-0 mt-2">
                                             <div class="col form-floating">
                                                 <input type="text" class="form-control" name="desc_attr4"
@@ -313,7 +306,6 @@
                                         </div>
                                     </div>
                                     <div class="container px-0">
-                                        <!-- <label for="attr2">2.</label> -->
                                         <div class="row g-0 mt-2">
                                             <div class="col form-floating">
                                                 <input type="text" class="form-control"
@@ -382,106 +374,7 @@
             <button class="fixed-bottom w-100 btn btn-lg btn-dark mt-4" onclick="location.href='products.php'; return false;">Back</button>
         </div>
     </main>
+    <script src="/warehouse/js/scripts.js"></script>
 
 </body>
-<!-- <body>
-    <header>Edit Product Information</header>
-    <div id="msg">
-        
-    </div>
-    <div>
-        <form action="updateproduct.php" method="POST" enctype="multipart/form-data">
-            <p>
-                <label for="p_name">Product Name: </label>
-                <input type="text" name="product_name" id="p_name" required value="<?= $product_name ?>">
-            </p>
-            <p>
-                <label for="cat">Product Category:</label>
-                <select name="product_category" id="cat" required selected="<?= $category ?>">
-                    <option value="Electronics">Electronics</option>
-                    <option value="Clothing">Clothing</option>
-                    <option value="Grocery">Grocery</option>
-                    <option value="Stationary">Stationary</option>
-                    <option value="Furniture">Furniture</option>
-                    <option value="Others">Others</option>
-                </select>
-            </p>
-            <p>
-                <label for="p_price">Product Price: </label>
-                <input type="number" name="product_price" id="p_price" min="0" required value="<?= $price ?>">
-            </p>
-            <p>
-                <label for="p_quantity">Product Quantity: </label>
-                <input type="number" name="product_quantity" id="p_quantity" min="0" required value="<?= $quantity ?>">
-            </p>
-            <p>
-                <div>
-                    Product Details
-                    <div>
-                        <p>
-                            <label for="attr1">1.</label>
-                            <input type="text" name="desc_attr1" id="attr1" placeholder="Attribute 1" value="<?= $spec_names[0] ?>"> : 
-                            <input type="text" name="desc_val1" id="val1" placeholder="Value 1" value="<?= $spec_values[0] ?>">
-                        </p>
-                        <p>
-                            <label for="attr2">2.</label>
-                            <input type="text" name="desc_attr2" id="attr2" placeholder="Attribute 2" value="<?= $spec_names[1] ?>"> :  
-                            <input type="text" name="desc_val2" id="val2" placeholder="Value 2" value="<?= $spec_values[1] ?>">
-                        </p>
-                        <p>
-                            <label for="attr3">3.</label>
-                            <input type="text" name="desc_attr3" id="attr3" placeholder="Attribute 3" value="<?= $spec_names[2] ?>"> : 
-                            <input type="text" name="desc_val3" id="val3" placeholder="Value 3" value="<?= $spec_values[2] ?>">
-                        </p>
-                        <p>
-                            <label for="attr4">4.</label>
-                            <input type="text" name="desc_attr4" id="attr4" placeholder="Attribute 4" value="<?= $spec_names[3] ?>"> :  
-                            <input type="text" name="desc_val4" id="val4" placeholder="Value 4" value="<?= $spec_values[3] ?>">
-                        </p>
-                        <p>
-                            <label for="attr5">5.</label>
-                            <input type="text" name="desc_attr5" id="attr5" placeholder="Attribute 5" value="<?= $spec_names[4] ?>"> : 
-                            <input type="text" name="desc_val5" id="val5" placeholder="Value 5" value="<?= $spec_values[4] ?>">
-                        </p>
-                    </div>
-                </div>
-                <div>
-                    Additional Details
-                    <div>
-                        <p>
-                            <label for="p_image">Product Image: </label>
-                            <input type="file" name="product_image" id="p_image"><br>
-                            <figure class="updateproduct_figure">
-                                <figcaption>Image preview</figcaption>
-                                <img src="<?= $product_image ?>" alt="<?= $product_name ?>" class="updateproduct_image" id="product_image"> 
-                            </figure>
-                        </p>
-                        <p>
-                            <label for="p_desc">Product Description: </label><br>
-                            <textarea name="product_desc" id="p_desc" cols="30" rows="10"><?= $product_desc ?></textarea>
-                        </p>
-                    </div>
-                </div>
-            </p>
-            
-            <p>
-                <label for="blk_no">Block-number: </label>
-                <input type="number" name="block_no" id="blk_no" min="0" required value="<?= $block_no ?>">
-            </p>
-            <p>
-                <label for="row_no">Row-number: </label>
-                <input type="number" name="row_no" id="row_no" min="0" required value="<?= $row_no ?>">
-            </p>
-            <p>
-                <input type="hidden" name="update_confirm" id="update_confirm" value="0">
-                <input type="submit" value="Update Product" onclick="update_confirm.value = '1';">
-                <button onclick="location.href='updateproduct.php'; return false;">Reset</button>
-            </p>
-        </form>
-    </div>
-    <div>
-        <button onclick="location.href='products.php'; return false;">Back</button>
-    </div>
-
-</body> -->
 </html>

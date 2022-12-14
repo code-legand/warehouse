@@ -34,8 +34,6 @@
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
-    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
-    <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
@@ -70,19 +68,4 @@
         </div>
     </main>
 </body>
-<!-- <body>
-    <header>Reject Order</header>
-    <div id="msg">
-        
-        
-    </div>
-    <div>
-        Are you sure you want to reject this order?
-        <form action="rejectorder.php" method="post">
-            <input type="hidden" name="reject_confirm" id="reject_confirm" value="0">
-            <input type="submit" value="YES" onclick="reject_confirm.value = '1'">
-            <button onclick="location.href='orders.php'; return false;">NO</button>
-    </div>
-
-</body> -->
 </html>

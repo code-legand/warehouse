@@ -16,8 +16,6 @@
 
     <link rel="stylesheet" href="/warehouse/css/bootstrap.min.css">
     <link rel="stylesheet" href="/warehouse/css/styles.css">
-    <link rel="stylesheet" href="/warehouse/css/userlogin.css">
-    <link rel="font" href="">
     <link rel="apple-touch-icon" sizes="180x180" href="/warehouse/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/warehouse/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/warehouse/img/favicon-16x16.png">
@@ -28,7 +26,6 @@
 </head>
 
 <body class="text-center d-flex justify-content-center">
-    <!-- <header>Log In</header> -->
     <main class="form-signin p-5">
         <?php 
             if (isset($_SESSION['message'])) {
@@ -53,16 +50,4 @@
             </div>
     </main>
 </body>
-<!-- <body>
-    <header>Warehouse Management System</header>
-
-    <div class="container center px-25">
-        <div>
-            <button onclick="location.href='user/login.php';">Log In</button>
-            <button onclick="location.href='user/signup.php';">Register</button>
-        </div>  
-    </div>
-      
-  </body> -->
-
 </html>
